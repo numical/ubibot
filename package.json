@@ -1,0 +1,46 @@
+{
+  "name": "ubibot",
+  "version": "0.0.1",
+  "description": "A friendly little bot for simple use anywhere",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "pretest": "semistandard",
+    "test": "tap lib/**/*.test.js",
+    "coverage": "npm test -- --cov --coverage-report lcov"
+  },
+  "files": [
+    "index.js",
+    "./lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/numical/ubibot.git"
+  },
+  "keywords": [
+    "bot",
+    "conversational"
+  ],
+  "author": "mike.evans@numical.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/numical/ubibot/issues"
+  },
+  "homepage": "https://github.com/numical/ubibot#readme",
+  "engines": {
+    "node": ">=8.1.0"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "i18next": "^10.0.3",
+    "rfr": "^1.2.3",
+    "use-strict": "^1.0.1"
+  },
+  "devDependencies": {
+    "tap": "^10.7.2",
+    "testdouble": "^3.2.6"
+  }
+}
