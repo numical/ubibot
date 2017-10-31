@@ -8,13 +8,14 @@
     "test": "test"
   },
   "scripts": {
-    "pretest": "semistandard",
+    "pretestX": "semistandard",
     "test": "tap lib/**/*.test.js",
     "coverage": "npm test -- --cov --coverage-report lcov"
   },
   "files": [
     "index.js",
-    "./lib"
+    "./lib",
+    "./languages"
   ],
   "repository": {
     "type": "git",
@@ -36,7 +37,6 @@
   "dependencies": {
     "debug": "^3.1.0",
     "i18next": "^10.0.3",
-    "rfr": "^1.2.3",
     "use-strict": "^1.0.1"
   },
   "devDependencies": {
