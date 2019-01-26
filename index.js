@@ -1,3 +1,5 @@
+"use-strict";
+
 // applies 'use strict' pragma all files loaded after this
 require('use-strict');
 

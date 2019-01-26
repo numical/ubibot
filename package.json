@@ -8,14 +8,13 @@
     "test": "test"
   },
   "scripts": {
-    "pretestX": "semistandard",
-    "test": "tap lib/**/*.test.js",
-    "coverage": "npm test -- --cov --coverage-report lcov"
+    "commit": "npx git-cz",
+    "test": "tape lib/**/*.test.js | tap-spec"
   },
   "files": [
     "index.js",
     "./lib",
-    "./languages"
+    "content"
   ],
   "repository": {
     "type": "git",
@@ -32,15 +31,22 @@
   },
   "homepage": "https://github.com/numical/ubibot#readme",
   "engines": {
-    "node": ">=8.1.0"
+    "node": ">=10.15.0"
   },
   "dependencies": {
-    "debug": "^3.1.0",
-    "i18next": "^10.0.3",
+    "debug": "^4.1.1",
     "use-strict": "^1.0.1"
   },
   "devDependencies": {
-    "tap": "^10.7.2",
-    "testdouble": "^3.2.6"
+    "commitizen": "^3.0.5",
+    "cz-emoji": "^1.1.2",
+    "eslint": "^5.12.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-immutable": "^1.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.2",
+    "testdouble": "^3.9.3"
   }
 }
