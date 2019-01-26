@@ -1,9 +1,9 @@
 "use-strict";
 
 // applies 'use strict' pragma all files loaded after this
-require('use-strict');
+require("use-strict");
 
 // the public api
-const api = require('core/api.js');
+const api = require("core/api.js");
 
 module.exports = api;

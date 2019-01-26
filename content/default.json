@@ -1,2 +1,9 @@
 {
+  "io": {
+    "console": {
+      "botPrefix": "Ubibot : ",
+      "hello": "Hi, I'm Ubibot.\nI'm not very clever, but I am very focussed on helping you.\nCTRL+C to kill me :-(",
+      "prompt": "You : "
+    }
+  }
 }

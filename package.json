@@ -8,8 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "commit": "npx git-cz",
-    "test": "tape lib/**/*.test.js | tap-spec"
+    "start": "nps"
   },
   "files": [
     "index.js",
@@ -35,6 +34,7 @@
   },
   "dependencies": {
     "debug": "^4.1.1",
+    "ramda": "^0.26.1",
     "use-strict": "^1.0.1"
   },
   "devDependencies": {
@@ -44,6 +44,8 @@
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-immutable": "^1.0.0",
     "eslint-plugin-prettier": "^3.0.1",
+    "nps": "^5.9.3",
+    "nps-utils": "^1.7.0",
     "prettier": "^1.16.1",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.2",
