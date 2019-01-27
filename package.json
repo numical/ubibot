@@ -8,7 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "start": "nps"
+    "start": "nps",
+    "test": "nps test"
   },
   "files": [
     "index.js",
