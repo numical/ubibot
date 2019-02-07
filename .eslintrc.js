@@ -5,12 +5,17 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: "plugin:prettier/recommended",
+  extends: ["standard", "plugin:prettier/recommended"],
   parserOptions: {
     ecmaVersion: 2018
   },
   plugins: ["immutable", "prettier"],
   rules: {
-    "prettier/prettier": "error"
+    "prettier/prettier": [
+      "error",
+      {
+        printWidth: 120
+      }
+    ]
   }
 };
