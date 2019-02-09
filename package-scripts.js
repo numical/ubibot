@@ -7,6 +7,6 @@ module.exports = {
     run: {
       console: "node lib/io/cli/start"
     },
-    test: "tape lib/**/*.test.js | tap-spec"
+    test: "tape lib/**/**/*.test.js | tap-spec"
   }
 };
