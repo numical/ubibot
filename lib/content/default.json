@@ -2,9 +2,10 @@
   "io": {
     "console": {
       "botPrefix": "Ubibot",
-      "hello": "Hi, I'm Ubibot.\nI'm not very clever, but I am very focussed on helping you.\nCTRL+C to kill me :-(",
+      "killInstruction": "CTRL+C to kill me :-(",
       "prefixDelimiter": " : ",
       "userPrefix": "You"
-    }
+    },
+    "hello": "Hi, I'm Ubibot.\nI'm not very clever, but I am very focussed on helping you."
   }
 }

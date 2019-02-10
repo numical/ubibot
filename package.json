@@ -34,12 +34,14 @@
     "node": ">=10.15.0"
   },
   "dependencies": {
+    "boom": "^7.3.0",
     "debug": "^4.1.1",
     "koa": "2.7.0",
     "koa-body": "^4.0.8",
     "koa-router": "7.4.0",
     "ramda": "^0.26.1",
     "supertest": "3.4.2",
+    "uid-safe": "^2.1.5",
     "use-strict": "^1.0.1"
   },
   "devDependencies": {
