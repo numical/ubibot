@@ -1,7 +1,6 @@
-Ubibot : Hi, I'm Ubibot.
-Ubibot : I'm not very clever, but I am very focussed on helping you.
-Ubibot : CTRL+C to kill me :-(
-You : Hello World
-Ubibot : Hello World
-You : And again
-Ubibot : And again
+bot:Hi, I'm Ubibot.
+bot:I'm not very clever, but I am very focussed on helping you.
+user:Hello World
+bot:Hello World
+user:And again
+bot:And again
