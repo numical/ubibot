@@ -42,7 +42,8 @@
     "ramda": "^0.26.1",
     "supertest": "3.4.2",
     "uid-safe": "^2.1.5",
-    "use-strict": "^1.0.1"
+    "use-strict": "^1.0.1",
+    "yup": "^0.26.10"
   },
   "devDependencies": {
     "commitizen": "^3.0.5",

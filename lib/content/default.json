@@ -1,9 +1,0 @@
-{
-  "io": {
-    "console": {
-      "botPrefix": "Ubibot : ",
-      "userPrefix": "You : "
-    },
-    "hello": "Hi, I'm Ubibot.\nI'm not very clever, but I am very focussed on helping you."
-  }
-}
