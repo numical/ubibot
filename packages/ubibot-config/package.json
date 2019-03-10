@@ -1,0 +1,21 @@
+{
+  "name": "ubibot-config",
+  "version": "0.0.1",
+  "description": "Centralised configuration for ubibot.",
+  "main": "api.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.26.1",
+    "yup": "0.26.10"
+  },
+  "devDependencies": {
+    "tape": "^4.10.1"
+  }
+}

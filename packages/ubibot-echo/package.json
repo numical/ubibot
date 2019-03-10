@@ -1,0 +1,15 @@
+{
+  "name": "ubibot-echo",
+  "version": "0.0.1",
+  "description": "The simplest possible ubibot domain.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node ./lib/echo.js",
+    "test": "node ./test/echo.test.js"
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ubibot-test",
+  "version": "0.0.1",
+  "description": "",
+  "main": "api.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT",
+  "dependencies": {
+    "tape": "4.10.1"
+  }
+}

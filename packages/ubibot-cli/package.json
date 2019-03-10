@@ -1,0 +1,15 @@
+{
+  "name": "ubibot-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "memorystream": "0.3.1"
+  }
+}
