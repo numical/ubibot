@@ -1,15 +1,18 @@
 {
-  "name": "ubibot-cli",
+  "name": "@numical/ubibot-cli",
   "version": "0.0.1",
   "description": "",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Use exported function testCLI() in a domain plugin such as ubibot-echo.\" && exit 1"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@numical/ubibot-core": "0.0.1"
+  },
   "devDependencies": {
-    "memorystream": "0.3.1"
+    "memorystream": "0.3.1",
+    "@numical/ubibot-test": "0.0.1"
   }
 }

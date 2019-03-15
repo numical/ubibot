@@ -9,13 +9,14 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018
   },
-  plugins: ["immutable", "prettier"],
+  plugins: ["prettier", "const-immutable"],
   rules: {
     "prettier/prettier": [
       "error",
       {
         printWidth: 120
       }
-    ]
+    ],
+    "const-immutable/no-mutation": 2
   }
 };

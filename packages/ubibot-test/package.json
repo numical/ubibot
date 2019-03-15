@@ -1,5 +1,5 @@
 {
-  "name": "ubibot-test",
+  "name": "@numical/ubibot-test",
   "version": "0.0.1",
   "description": "",
   "main": "api.js",

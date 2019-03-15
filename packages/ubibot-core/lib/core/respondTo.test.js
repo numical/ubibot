@@ -1,4 +1,4 @@
-const { test } = require("../../../ubibot-test/api");
+const { test } = require("ubibot-test");
 const respondTo = require("./respondTo");
 
 test("respondTo echoes", async t => {

@@ -3,7 +3,7 @@ const Body = require("koa-body");
 const Router = require("koa-router");
 const { notImplemented, methodNotAllowed } = require("boom");
 const endPoints = require("./endPoints");
-const { respondTo } = require("../../ubibot-core/api");
+const { respondTo } = require("ubibot-core");
 
 const defaultOptions = {
   port: 1971,

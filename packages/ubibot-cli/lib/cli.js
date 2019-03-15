@@ -1,6 +1,6 @@
 const { EOL } = require("os");
 const readline = require("readline");
-const { respondTo } = require("../../ubibot-core/api");
+const { respondTo } = require("ubibot-core");
 
 const startCLI = (config, { stdin, stdout } = process) => {
   if (!config) {
@@ -14,20 +14,20 @@ const startCLI = (config, { stdin, stdout } = process) => {
   // set up UI
   const ui = readline.createInterface(stdin, stdout);
   ui.setPrompt(userPrefix);
-  ui.send = response => {
+  const send = response => {
     response.split(EOL).forEach(line => {
       stdout.write(`${botPrefix}${line}\n`);
     });
   };
 
   // say Hi
-  ui.send(hello);
+  send(hello);
   ui.prompt();
 
   // start listening
   ui.on("line", async request => {
     const response = await respondTo(request, config.start);
-    ui.send(response);
+    send(response);
     ui.prompt();
   });
 };

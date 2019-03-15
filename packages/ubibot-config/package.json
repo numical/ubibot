@@ -1,5 +1,5 @@
 {
-  "name": "ubibot-config",
+  "name": "@numical/ubibot-config",
   "version": "0.0.1",
   "description": "Centralised configuration for ubibot.",
   "main": "api.js",

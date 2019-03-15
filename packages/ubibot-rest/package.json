@@ -1,5 +1,5 @@
 {
-  "name": "ubibot-rest",
+  "name": "@numical/ubibot-rest",
   "version": "0.0.1",
   "description": "",
   "main": "api.js",
@@ -13,9 +13,11 @@
     "koa": "2.7.0",
     "koa-body": "4.0.8",
     "koa-router": "7.4.0",
+    "@numical/ubibot-core": "0.0.1",
     "uid-safe": "2.1.5"
   },
   "devDependencies": {
-    "supertest": "3.4.2"
+    "supertest": "3.4.2",
+    "@numical/ubibot-test": "0.0.1"
   }
 }
