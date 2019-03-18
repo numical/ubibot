@@ -1,6 +1,6 @@
 const { EOL } = require("os");
 const MemoryStream = require("memorystream");
-const { loadScripts, scriptPrefixes } = require("ubibot-test");
+const { loadScripts, scriptPrefixes } = require("@numical/ubibot-test");
 const { startCLI } = require("../lib/cli");
 
 const { bot, delimiter, user } = scriptPrefixes;

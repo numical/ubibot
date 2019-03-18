@@ -1,4 +1,4 @@
-const { test } = require("ubibot-test");
+const { test } = require("@numical/ubibot-test");
 const respondTo = require("./respondTo");
 
 test("respondTo echoes", async t => {

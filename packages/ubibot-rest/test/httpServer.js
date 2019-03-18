@@ -1,6 +1,6 @@
 const { EOL } = require("os");
 const request = require("supertest");
-const { loadScripts, scriptPrefixes } = require("ubibot-test");
+const { loadScripts, scriptPrefixes } = require("@numical/ubibot-test");
 const { startReST } = require("../lib/httpServer");
 const endPoints = require("../lib/endPoints");
 

@@ -1,5 +1,5 @@
 {
-  "name": "@numical/ubibot-echo",
+  "name": "@numical/echobot",
   "version": "0.0.1",
   "description": "The simplest possible ubibot domain.",
   "main": "index.js",
@@ -10,9 +10,14 @@
     "start": "node ./lib/echo.js",
     "test": "node ./test/echo.test.js"
   },
+  "bin": {
+    "echobot": "./bin/start.js"
+  },
   "dependencies": {
     "@numical/ubibot-cli": "0.0.1",
-    "@numical/ubibot-config": "0.0.1"
+    "@numical/ubibot-config": "0.0.1",
+    "@numical/ubibot-rest": "0.0.1",
+    "@numical/ubibot-test": "0.0.1"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT"

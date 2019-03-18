@@ -3,18 +3,54 @@ Command Line Interface for ubibot.
 
 Currently **alpha** code 
 
-## Installation
+## installation
 ```bash
-npm install ubibot-cli
+npm install @numical/ubibot-cli
 ```
 
-## Usage
+## usage
 This is not a standalone library.
-It must be used as a dependency in a 'domain' module such as ubibot-echo:
+It must be used as a dependency in a 'domain' module such as [@numical/echobot](../echobot/README.md):
 ```javascript
-const { startCLI } = require("ubibot-cli");
+const { startCLI } = require("@numical/ubibot-cli");
 const configuration = ...
+
 startCLI(configuration);
 ```
 This will result in a command line interface:
+
+![CI screenshot](./docs/cli-screenshot.png)
+
+## testing
+This also offers a test runner for the CLI channel:
+```javascript
+const { testCLI } = require("@numical/ubibot-cli");
+const { test } = require("@numical/ubibot-test");
+const configuration = ...
+
+test("My Domain Tests", testCLI(config));
+
+```
+See [@numical/ubibot-test](../ubibot-test/README.md) for more on using this test runner.
+
+## api
+This module exports 2 functions:
+
+###```startCLI(config)```
+instantiates a single-user ubibot and starts a command line interface  
+__arguments__  
+config (Object) : configuration object created using [@numical/ubibot-config](packages/ubibot-config/README.md)  
+__returns__  
+undefined - but a side effect is a spawned [repl](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) process
+
+
+###```testCLI(config)```
+instantiates a single-user ubibot and runs a test runner for use with [@numical/ubibot-test](packages/ubibot-test/README.md)  
+__arguments__  
+config (Object) : configuration object created using [@numical/ubibot-config](packages/ubibot-config/README.md)  
+__returns__  
+a callback function to be passed to [tape](https://www.npmjs.com/package/tape)'s [```test([name], [opts], cb)```](https://www.npmjs.com/package/tape#testname-opts-cb) method.
+
+
+
 

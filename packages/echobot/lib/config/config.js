@@ -1,5 +1,5 @@
 const path = require("path");
-const { configure } = require("ubibot-config");
+const { configure } = require("@numical/ubibot-config");
 const content = require("./content");
 const start = require("../commands/selectCommand");
 
