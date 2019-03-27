@@ -7,8 +7,8 @@ const { respondTo } = require("@numical/ubibot-core");
 
 const defaultOptions = {
   port: 1971,
-  store: require("./inMemoryConversationStore"),
-  idGenerator: require("./conversationIdGenerator")
+  store: require("./inMemoryChatStore"),
+  idGenerator: require("./chatIdGenerator")
 };
 
 const startReST = (config, options) => {
@@ -20,27 +20,27 @@ const startReST = (config, options) => {
     response.status = 200;
   };
 
-  const newConversation = async ({ request, response }) => {
-    const conversationId = await idGenerator();
-    const conversation = { bot: hello, conversationId, history: hello };
-    await store.set(conversationId, conversation);
-    response.body = { bot: hello, conversationId };
+  const newChat = async ({ request, response }) => {
+    const chatId = await idGenerator();
+    const chat = { bot: hello, chatId, history: hello };
+    await store.set(chatId, chat);
+    response.body = { bot: hello, chatId };
   };
 
-  const continueConversation = async ({ request, response, params }) => {
+  const continueChat = async ({ request, response, params }) => {
     const { user } = request.body;
-    const { conversationId } = params;
-    const conversation = await store.get(conversationId);
-    if (conversation) {
+    const { chatId } = params;
+    const chat = await store.get(chatId);
+    if (chat) {
       const bot = await respondTo(user, config.start);
-      const updatedConversation = {
-        ...conversation,
+      const updatedchat = {
+        ...chat,
         bot,
-        history: [...conversation.history, user, ...conversation.bot],
+        history: [...chat.history, user, ...chat.bot],
         user
       };
-      await store.set(conversationId, updatedConversation);
-      response.body = { bot, conversationId };
+      await store.set(chatId, updatedchat);
+      response.body = { bot, chatId };
     } else {
       response.status = 404;
     }
@@ -59,8 +59,8 @@ const startReST = (config, options) => {
   app.use(router.routes());
 
   router.get(endPoints.healthCheck, healthCheck);
-  router.post(endPoints.newConversation, newConversation);
-  router.post(endPoints.conversation(":conversationId"), continueConversation);
+  router.post(endPoints.newChat, newChat);
+  router.post(endPoints.chat(":chatId"), continueChat);
 
   return app.listen(port, () => {
     console.log(`ubibot http server listening on port ${port} and pid ${process.pid}`);

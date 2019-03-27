@@ -1,6 +1,6 @@
 const { test } = require("tape");
-const configure = require("./configure");
-const defaultConfig = require("./defaultConfig");
+const configure = require("../lib/configure");
+const defaultConfig = require("../lib/defaultConfig");
 
 const testFn = () => {};
 

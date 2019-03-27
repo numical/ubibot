@@ -15,9 +15,10 @@
   },
   "dependencies": {
     "@numical/ubibot-cli": "0.0.1",
-    "@numical/ubibot-config": "0.0.1",
-    "@numical/ubibot-rest": "0.0.1",
-    "@numical/ubibot-test": "0.0.1"
+    "@numical/ubibot-config": "0.0.1"
+  },
+  "devDependencies": {
+    "@numical/ubibot-rest": "0.0.1"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT"

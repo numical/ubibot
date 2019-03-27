@@ -20,17 +20,35 @@ startReST(configuration);
 ```
 The endpoints are:
 * ```GET /health```: simple health check; returns HTTP code 200 is ok;
-* ```POST /conversation```: starts a new user session with ubibot;
-* ```POST /conversation/{id}```: continues a user session with ubibot;
+* ```POST /chat```: starts a new user session with ubibot;
+* ```POST /chat/{id}```: continues a user session with ubibot;
 
 ## testing
 This also offers a test runner for the ReST server:
 ```javascript
 const { testReST } = require("@numical/ubibot-rest");
-const { test } = require("@numical/ubibot-test");
 const config = ...
 
-test("My Domain Tests", testReST(config));
+testReST("My Domain Tests", config);
 
 ```
 See [@numical/ubibot-test](../ubibot-test/README.md) for more on using this test runner.
+
+## api
+This module exports 2 functions:
+
+###```startReST(config)```
+* instantiates a single-user ubibot and starts a command line interface  
+    __arguments__  
+        - config (Object) : configuration object created using [@numical/ubibot-config](packages/ubibot-config/README.md)  
+    __returns__  
+    undefined - but a side effect is a spawned [http.Server](https://nodejs.org/api/http.html#http_class_http_server) process wrapped by [Koa](https://www.npmjs.com/package/koa)
+
+
+###```testReST(config)```
+* instantiates a single-user ubibot and runs a test runner for use with [@numical/ubibot-test](packages/ubibot-test/README.md)  
+    __arguments__  
+        - name (String): display name for the test  
+        - config (Object) : configuration object created using [@numical/ubibot-config](packages/ubibot-config/README.md)  
+    __returns__  
+    undefined

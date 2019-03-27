@@ -1,9 +1,9 @@
-const conversation = conversationId => `/conversation/${conversationId}`;
+const chat = chatId => `/chat/${chatId}`;
 const healthCheck = "/health";
-const newConversation = "/conversation";
+const newChat = "/chat";
 
 module.exports = {
-  conversation,
+  chat,
   healthCheck,
-  newConversation
+  newChat
 };

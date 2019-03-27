@@ -1,5 +1,6 @@
 const { EOL } = require("os");
 const MemoryStream = require("memorystream");
+const { test } = require("tape");
 const { loadScripts, scriptPrefixes } = require("@numical/ubibot-test");
 const { startCLI } = require("../lib/cli");
 
@@ -60,13 +61,15 @@ const runTestScript = (config, script, test) => {
   script.forEach(parseScriptLine);
 };
 
-const testCLI = config => async test => {
-  const { scriptsDir } = config;
-  const scripts = await loadScripts(scriptsDir);
-  test.plan(scripts.length);
-  Object.entries(scripts).forEach(([name, script]) => {
-    test.test(`running test script '${name}'`, t => {
-      runTestScript(config, script, t);
+const testCLI = async (name, config) => {
+  test(name, async testSuite => {
+    const { scriptsDir } = config;
+    const scripts = await loadScripts(scriptsDir);
+    testSuite.plan(scripts.length);
+    Object.entries(scripts).forEach(([name, script]) => {
+      testSuite.test(`running test script '${name}'`, scriptTest => {
+        runTestScript(config, script, scriptTest);
+      });
     });
   });
 };

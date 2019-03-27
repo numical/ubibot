@@ -26,10 +26,9 @@ This will result in:
 This also offers a test runner for the CLI channel:
 ```javascript
 const { testCLI } = require("@numical/ubibot-cli");
-const { test } = require("@numical/ubibot-test");
 const config = ...
 
-test("My Domain Tests", testCLI(config));
+testCLI("My Domain Tests", config);
 
 ```
 See [@numical/ubibot-test](../ubibot-test/README.md) for more on using this test runner.
@@ -48,10 +47,10 @@ This module exports 2 functions:
 ###```testCLI(config)```
 * instantiates a single-user ubibot and runs a test runner for use with [@numical/ubibot-test](packages/ubibot-test/README.md)  
     __arguments__  
+        - name (String): display name for the test  
         - config (Object) : configuration object created using [@numical/ubibot-config](packages/ubibot-config/README.md)  
     __returns__  
-    a callback function to be passed to [tape](https://www.npmjs.com/package/tape)'s [```test([name], [opts], cb)```](https://www.npmjs.com/package/tape#testname-opts-cb) method.
-
+    undefined
 
 
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Use exported function testCLI() in a domain plugin such as ubibot-echo.\" && exit 1"
+    "test": "echo \"ubibot-cli: use exported function testCLI() in a domain plugin such as ubibot-echo.\""
   },
   "author": "mike.evans@numical.com",
   "license": "MIT",
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "memorystream": "0.3.1",
-    "@numical/ubibot-test": "0.0.1"
+    "@numical/ubibot-test": "0.0.1",
+    "tape": "^4.10.1"
   }
 }
