@@ -39,16 +39,16 @@ This module exports 2 functions:
 ###```startCLI(config)```
 * instantiates a single-user ubibot and starts a command line interface  
     __arguments__  
-        - config (Object) : configuration object created using [@numical/ubibot-config](packages/ubibot-config/README.md)  
+        - config (Object) : configuration object created using [@numical/ubibot-config](../ubibot-config/README.md)  
     __returns__  
     undefined - but a side effect is a spawned [repl](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) process
 
 
 ###```testCLI(config)```
-* instantiates a single-user ubibot and runs a test runner for use with [@numical/ubibot-test](packages/ubibot-test/README.md)  
+* instantiates a single-user ubibot and runs a test runner for use with [@numical/ubibot-test](../ubibot-test/README.md)  
     __arguments__  
         - name (String): display name for the test  
-        - config (Object) : configuration object created using [@numical/ubibot-config](packages/ubibot-config/README.md)  
+        - config (Object) : configuration object created using [@numical/ubibot-config](../ubibot-config/README.md)  
     __returns__  
     undefined
 

@@ -14,7 +14,7 @@ npx echobot
 ```
 
 ## entry points
-* [echo.js](packages/echobot/lib/echo.js) provides the runtime using the  [@numical/ubibot-cli](./packages/ubibot-cli/README.md) command line channel;
-* [echo.test.js](packages/echobot/test/echo.test.js) provides automated tests using two channels -  [@numical/ubibot-cli](./packages/ubibot-cli/README.md) and [@numical/ubibot-rest](./packages/ubibot-rest).
+* [echo.js](/lib/echo.js) provides the runtime using the  [@numical/ubibot-cli](../ubibot-cli/README.md) command line channel;
+* [echo.test.js](/test/echo.test.js) provides automated tests using two channels -  [@numical/ubibot-cli](../ubibot-cli/README.md) and [@numical/ubibot-rest](./packages/ubibot-rest).
 
 
