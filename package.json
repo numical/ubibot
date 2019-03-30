@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "commit": "git-cz",
-    "test": "lerna run test"
+    "test": "lerna bootstrap && lerna run test"
   },
   "devDependencies": {
     "commitizen": "3.0.7",
