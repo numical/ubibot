@@ -16,7 +16,7 @@ const startCLI = (config, { stdin, stdout } = process) => {
   ui.setPrompt(userPrefix);
   const send = response => {
     response.split(EOL).forEach(line => {
-      stdout.write(`${botPrefix}${line}\n`);
+      stdout.write(`${botPrefix}${line}${EOL}`);
     });
   };
 
