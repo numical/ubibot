@@ -2,7 +2,7 @@
 A friendly little bot for simple use anywhere.
 
 [![Build status](https://travis-ci.org/numical/ubibot.svg)](https://travis-ci.org/numical/ubibot)
-
+[![Known Vulnerabilities](https://snyk.io/test/github/numical/ubibot/badge.svg)](https://snyk.io/test/github/numical/ubibot)
 ## tl;dr
 A modular framework for conversational user interfaces, without any AI.  
 This [monorepo](https://gomonorepo.org/) holds core and example domain packages - see [about](#about).   
