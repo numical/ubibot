@@ -1,6 +1,23 @@
 # bankbot
-An example domain package demonstrating a bot for servicing a personal bank account.
+An example domain package demonstrating a bot for servicing a personal bank account.  
+This will be an ubibot rewrite of [an earlier bankbot implementation](https://github.com/numical/bankbot).  
+Currently **alpha** code.
 
-Not started yet, but will be an ubibot rewrite of [an earlier bankbot implementation](https://github.com/numical/bankbot).
+## installation
+```bash
+npm install @numical/bankbot
+```
+
+## usage
+```bash
+npx bankbot
+```
+
+## entry points
+* [bankbot.js](/lib/bankbot.js) provides the runtime using the  [@numical/ubibot-cli](../ubibot-cli/README.md) command line channel;
+* [bankbot.test.js](/test/bankbot.test.js) provides automated tests using two channels -  [@numical/ubibot-cli](../ubibot-cli/README.md) and [@numical/ubibot-rest](./packages/ubibot-rest).
+
+
+
 
 

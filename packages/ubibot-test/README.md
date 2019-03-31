@@ -25,7 +25,7 @@ Use this library along with a channel-specific test runner to create 'black-box'
     ```
 1. Point the [configuration](../ubibot-config/README.md) ```scriptsDir``` value to this directory;
 1. Select a test runner supplied by a channel package such as [ubibot-cli](../ubibot-cli/README.md);
-1. Combine in a test module - see [echo.test.js](../echobot/test/echo.test.js) for an example.
+1. Combine in a test module - see [bankbot.test.js](../echobot/test/echo.test.js) for an example.
 
 ## the future
 Basic conversational user interfaces lend themselves to straightforward 'black box' testing, due to their [repl](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) -style semantics.  

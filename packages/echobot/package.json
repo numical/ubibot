@@ -11,7 +11,7 @@
     "test": "node ./test/echo.test.js"
   },
   "bin": {
-    "echobot": "./bin/start.js"
+    "echobot": "./lib/echo.js"
   },
   "dependencies": {
     "@numical/ubibot-cli": "0.0.1",

@@ -6,6 +6,21 @@
   "scripts": {
     "test": "echo \"bankbot: no test yet implemented\""
   },
+  "scripts": {
+    "start": "node ./lib/bankbot.js",
+    "test": "node ./test/bankbot.test.js"
+  },
+  "bin": {
+    "echobot": "./lib/bankbot.js"
+  },
   "author": "mike.evans@numical.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@numical/ubibot-cli": "0.0.1",
+    "@numical/ubibot-config": "0.0.1"
+  },
+  "devDependencies": {
+    "@numical/ubibot-rest": "0.0.1",
+    "tape": "^4.10.1"
+  }
 }
