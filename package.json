@@ -2,8 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "postinstall": "npx lerna bootstrap",
     "commit": "git-cz",
-    "test": "lerna bootstrap && lerna run test"
+    "test": "lerna run test --concurrency=1"
   },
   "devDependencies": {
     "commitizen": "3.0.7",
