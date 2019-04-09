@@ -9,7 +9,7 @@ This [monorepo](https://gomonorepo.org/) holds core and example domain packages 
 Currently **alpha** code 
 
 ## about
-Ubibot is to designd to hold very simple conversations within a strictly limited context;  
+Ubibot is to designd to hold very simple conversations within a strictly limited context.  
 
 Any single ubibot implementation consists of:
 * a **domain package** that supplies the context-specific content and logic;
@@ -26,6 +26,7 @@ Example domain packages:
 * [@numical/ubibot-test](packages/ubibot-test/README.md): a package to support testing.
 
 ## channel packages
+The various IO options for Ubibot:
 * [@numica/ubibot-cli](packages/ubibot-cli/README.md): a command line interface for ubibot; the simplest possible channel package;
 * [@numical/ubibot-rest](packages/ubibot-rest/README.md): a channel package for accessing a multi-user implementation of ubibot via a [HTTP ReST](https://www.restapitutorial.com/lessons/httpmethods.html) calls; 
 

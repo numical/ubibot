@@ -3,7 +3,7 @@ const Body = require("koa-body");
 const Router = require("koa-router");
 const { notImplemented, methodNotAllowed } = require("boom");
 const endPoints = require("./endPoints");
-const { respondTo } = require("@numical/ubibot-core");
+const { Chat } = require("@numical/ubibot-core");
 
 const defaultOptions = {
   port: 1971,
@@ -13,8 +13,6 @@ const defaultOptions = {
 
 const startReST = (config, options) => {
   const { port, store, idGenerator } = { ...defaultOptions, ...options };
-  const { content } = config;
-  const { hello } = content;
 
   const healthCheck = async ({ response }) => {
     response.status = 200;
@@ -22,47 +20,46 @@ const startReST = (config, options) => {
 
   const newChat = async ({ request, response }) => {
     const chatId = await idGenerator();
-    const chat = { bot: hello, chatId, history: hello };
-    await store.set(chatId, chat);
-    response.body = { bot: hello, chatId };
+    const chat = new Chat(config);
+    await store.set(chatId, chat.getState());
+    response.body = { bot: chat.hello(), chatId };
   };
 
   const continueChat = async ({ request, response, params }) => {
     const { user } = request.body;
     const { chatId } = params;
-    const chat = await store.get(chatId);
-    if (chat) {
-      const bot = await respondTo(user, config.start);
-      const updatedchat = {
-        ...chat,
-        bot,
-        history: [...chat.history, user, ...chat.bot],
-        user
-      };
-      await store.set(chatId, updatedchat);
+    const state = await store.get(chatId);
+    if (state) {
+      const chat = new Chat(config, state);
+      const bot = await chat.respondTo(user);
+      await store.set(chatId, chat.getState());
       response.body = { bot, chatId };
     } else {
       response.status = 404;
     }
   };
 
-  const app = new Koa();
-  app.use(new Body());
-  const router = new Router();
-  app.use(
-    router.allowedMethods({
-      throw: true,
-      notImplemented,
-      methodNotAllowed
-    })
-  );
-  app.use(router.routes());
+  const createApp = () => {
+    const app = new Koa();
+    const router = new Router();
 
-  router.get(endPoints.healthCheck, healthCheck);
-  router.post(endPoints.newChat, newChat);
-  router.post(endPoints.chat(":chatId"), continueChat);
+    app.use(new Body());
+    app.use(
+      router.allowedMethods({
+        throw: true,
+        notImplemented,
+        methodNotAllowed
+      })
+    );
+    app.use(router.routes());
 
-  return app.listen(port, () => {
+    router.get(endPoints.healthCheck, healthCheck);
+    router.post(endPoints.newChat, newChat);
+    router.post(endPoints.chat(":chatId"), continueChat);
+    return app;
+  };
+
+  return createApp().listen(port, () => {
     console.log(`ubibot http server listening on port ${port} and pid ${process.pid}`);
   });
 };

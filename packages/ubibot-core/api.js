@@ -1,4 +1,5 @@
 // the public api
-const respondTo = require("./lib/core/respondTo");
+const Chat = require("./lib/Chat");
+const prefixes = require("./lib/prefixes");
 
-module.exports = { respondTo };
+module.exports = { Chat, prefixes };

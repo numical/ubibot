@@ -1,11 +1,12 @@
 const { EOL } = require("os");
 const request = require("supertest");
 const { test } = require("tape");
-const { loadScripts, scriptPrefixes } = require("@numical/ubibot-test");
+const { loadScripts } = require("@numical/ubibot-test");
+const { prefixes } = require("@numical/ubibot-core");
 const { startReST } = require("../lib/httpServer");
 const endPoints = require("../lib/endPoints");
 
-const { bot, delimiter, user } = scriptPrefixes;
+const { botPrefix, userPrefix, delimiter } = prefixes;
 
 let id = 0;
 const idGenerator = () => `${++id}`;
@@ -16,7 +17,7 @@ const runTestScript = async (app, script, test) => {
   for (const line of script) {
     const [source, value] = line.split(delimiter);
     switch (source) {
-      case user:
+      case userPrefix:
         // lib previous response
         const { bot: actual, chatId } = response.body;
         const expected = botScript.join(EOL);
@@ -26,7 +27,7 @@ const runTestScript = async (app, script, test) => {
         // get next response
         response = await app.post(endPoints.chat(chatId)).send({ user: value });
         break;
-      case bot:
+      case botPrefix:
         botScript.push(value);
         break;
       default:

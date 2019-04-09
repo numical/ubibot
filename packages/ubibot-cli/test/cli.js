@@ -1,10 +1,11 @@
 const { EOL } = require("os");
 const MemoryStream = require("memorystream");
 const { test } = require("tape");
-const { loadScripts, scriptPrefixes } = require("@numical/ubibot-test");
+const { loadScripts } = require("@numical/ubibot-test");
+const { prefixes } = require("@numical/ubibot-core");
 const { startCLI } = require("../lib/cli");
 
-const { bot, delimiter, user } = scriptPrefixes;
+const { botPrefix, userPrefix, delimiter } = prefixes;
 
 const runTestScript = (config, script, test) => {
   const stdin = new MemoryStream();
@@ -45,10 +46,10 @@ const runTestScript = (config, script, test) => {
   const parseScriptLine = line => {
     const [source, value] = line.split(delimiter);
     switch (source) {
-      case bot:
+      case botPrefix:
         addAssertion(value);
         break;
-      case user:
+      case userPrefix:
         stdin.write(`${value}${EOL}`);
         break;
       default:

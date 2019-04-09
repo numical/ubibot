@@ -12,6 +12,9 @@ npm install @numical/bankbot
 ```bash
 npx bankbot
 ```
+The premise:  
+You are a bank customer who wishes to service their personal current account.  
+You are already known and authenticated.
 
 ## entry points
 * [bankbot.js](/lib/bankbot.js) provides the runtime using the  [@numical/ubibot-cli](../ubibot-cli/README.md) command line channel;

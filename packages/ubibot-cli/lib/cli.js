@@ -1,14 +1,18 @@
 const { EOL } = require("os");
 const readline = require("readline");
-const { respondTo } = require("@numical/ubibot-core");
+const { Chat } = require("@numical/ubibot-core");
 
 const startCLI = (config, { stdin, stdout } = process) => {
   if (!config) {
     throw new Error("Missing config");
   }
+
+  // create new Chat instance;
+  const chat = new Chat(config);
+
   // get content
   const { content } = config;
-  const { hello, io } = content;
+  const { io } = content;
   const { botPrefix, userPrefix } = io.console;
 
   // set up UI
@@ -21,12 +25,12 @@ const startCLI = (config, { stdin, stdout } = process) => {
   };
 
   // say Hi
-  send(hello);
+  send(chat.hello());
   ui.prompt();
 
   // start listening
   ui.on("line", async request => {
-    const response = await respondTo(request, config.start);
+    const response = await chat.respondTo(request);
     send(response);
     ui.prompt();
   });
