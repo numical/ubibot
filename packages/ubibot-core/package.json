@@ -1,7 +1,7 @@
 {
   "name": "@numical/ubibot-core",
   "version": "0.0.1",
-  "description": "Core scafolding of ubibot framework.",
+  "description": "Core engine of ubibot framework.",
   "main": "api.js",
   "directories": {
     "lib": "lib"

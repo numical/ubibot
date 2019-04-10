@@ -1,3 +1,3 @@
-const { help } = require("../config/content");
+const { help } = require("../content");
 
 module.exports = async request => help;

@@ -1,5 +1,5 @@
 # ubibot-core
-Core scafolding of ubibot framework.
+Core engine of ubibot framework.
 
 Currently **alpha** code 
 

@@ -1,5 +1,7 @@
 // the public api
-const Chat = require("./lib/Chat");
-const prefixes = require("./lib/prefixes");
+const Chat = require("./lib/classes/Chat");
+const Context = require("./lib/classes/Context");
+const Match = require("./lib/classes/Match");
+const prefixes = require("./lib/constants/prefixes");
 
-module.exports = { Chat, prefixes };
+module.exports = { Chat, Context, Match, prefixes };

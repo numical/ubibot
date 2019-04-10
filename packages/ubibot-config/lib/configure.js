@@ -1,5 +1,4 @@
-const { mergeDeepRight } = require("ramda");
-
+const mergeDeepRight = require("ramda/src/mergeDeepRight");
 const defaultConfig = require("./defaultConfig");
 const validateConfig = require("./validateConfig");
 
@@ -11,12 +10,12 @@ const configure = (options, allowModifyAfterGet) => {
     if (getterCalled && !allowModifyAfterGet) {
       throw new Error("Conguration changed after it has been read.");
     }
-    config = Object.freeze(mergeDeepRight(config, options));
+    config = mergeDeepRight(config, options);
     validateConfig(config);
   } else {
     getterCalled = true;
   }
-  return config;
+  return Object.freeze(config);
 };
 
 module.exports = configure;

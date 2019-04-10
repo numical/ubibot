@@ -1,4 +1,4 @@
-const { botPrefix, userPrefix, delimiter } = require("./prefixes");
+const { botPrefix, userPrefix, delimiter } = require("../constants/prefixes");
 
 const createEntry = (prefix, msg) => `${Date.now()}${delimiter}${prefix}${delimiter}${msg}`;
 
@@ -7,13 +7,12 @@ class History {
     this.entries = entries;
   }
 
-  record(request) {
+  recordRequest(request) {
     this.entries.push(createEntry(userPrefix, request));
   }
 
-  recordAndReturn(response) {
+  recordResponse(response) {
     this.entries.push(createEntry(botPrefix, response));
-    return response;
   }
 }
 

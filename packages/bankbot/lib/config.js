@@ -1,10 +1,10 @@
 const path = require("path");
 const { configure } = require("@numical/ubibot-config");
 const content = require("./content");
-const start = require("../commands/selectCommand");
+const contexts = require("./contexts");
 
 module.exports = configure({
   content,
-  start,
-  scriptsDir: path.resolve(__dirname, "../../test/scripts")
+  contexts,
+  scriptsDir: path.resolve(__dirname, "../test/scripts")
 });

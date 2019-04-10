@@ -1,8 +1,6 @@
 const { existsSync, statSync } = require("fs");
 const Yup = require("yup");
 
-const isFunction = value => typeof value === "function";
-
 const isDir = path => {
   if (!existsSync(path)) {
     throw new Yup.ValidationError(`scriptsDir '${path}' must exist`);
@@ -15,9 +13,7 @@ const isDir = path => {
 
 const schema = Yup.object().shape({
   content: Yup.object().required(),
-  start: Yup.mixed()
-    .required()
-    .test("startIsFunction", "start must be a function", isFunction),
+  contexts: Yup.array().min(1),
   scriptsDir: Yup.string()
     .required()
     .test("scriptsDirExists", "scriptsDir must exist", isDir)

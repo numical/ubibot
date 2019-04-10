@@ -12,5 +12,6 @@ test("loadScripts", async t => {
   t.ok(names.includes("script1"), "includes the 'script1' script");
   t.ok(Array.isArray(scripts["script1"]), "contents are an array");
   t.equals(scripts["script1"].length, 3, "contents represent 3 lines");
+  t.equals(scripts["script2"].length, 3, "commments ar not included in contents");
   t.end();
 });

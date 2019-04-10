@@ -1,13 +1,10 @@
 const defaultContent = require("./defaultContent");
+const defaultContext = require("./defaultContext");
 const validateConfig = require("./validateConfig");
-
-const defaultStart = () => {
-  throw new Error("config.start function not defined");
-};
 
 const config = {
   content: defaultContent,
-  start: defaultStart,
+  contexts: [defaultContext],
   scriptsDir: __dirname
 };
 validateConfig(config);

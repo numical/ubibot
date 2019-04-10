@@ -36,3 +36,6 @@ More complex channels might offer bot-instigated communications via some form of
 Trickier, bots may be (or at least appear to be) less deterministic - offering several versions of an answer to a specific question.  
 This library will attempt to offer testing mechanisms for such cases. 
 
+## notes
+* When this library is used, it has explicit [side effects](./lib/sideEffects.js) designed to help testing and debugging.
+

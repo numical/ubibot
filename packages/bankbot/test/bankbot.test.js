@@ -1,6 +1,15 @@
 const { testCLI } = require("@numical/ubibot-cli");
 const { testReST } = require("@numical/ubibot-rest");
-const config = require("../lib/config/config");
+const config = require("../lib/config");
 
-testCLI("Domain: bankbot; IO: CLI", config);
-testReST("Domain: bankbot; IO: ReST", config);
+const possibleTests = {
+  CLI: testCLI.bind(null, "Domain: bankbot; Channel: CLI", config),
+  REST: testReST.bind(null, "Domain: bankbot; Channel: ReST", config)
+};
+
+const channel = process.env.UBIBOT_CHANNEL;
+if (!channel) {
+  Object.values(possibleTests).forEach(test => test());
+} else {
+  possibleTests[channel] && possibleTests[channel]();
+}

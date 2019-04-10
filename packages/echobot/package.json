@@ -8,14 +8,17 @@
   },
   "scripts": {
     "start": "node ./lib/echo.js",
-    "test": "node ./test/echo.test.js"
+    "test": "node ./test/echo.test.js",
+    "test:cli": "UBIBOT_CHANNEL=CLI node ./test/echo.test.js",
+    "test:rest": "UBIBOT_CHANNEL=REST node ./test/echo.test.js"
   },
   "bin": {
     "echobot": "./lib/echo.js"
   },
   "dependencies": {
     "@numical/ubibot-cli": "0.0.1",
-    "@numical/ubibot-config": "0.0.1"
+    "@numical/ubibot-config": "0.0.1",
+    "@numical/ubibot-core": "0.0.1"
   },
   "devDependencies": {
     "@numical/ubibot-rest": "0.0.1"

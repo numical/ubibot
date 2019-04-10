@@ -4,7 +4,9 @@
   "description": "An example domain package demonstrating a bot for servicing a personal bank account.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"bankbot: no test yet implemented\""
+    "test": "node ./test/bankbot.test.js",
+    "test:cli": "UBIBOT_CHANNEL=CLI node ./test/bankbot.test.js",
+    "test:rest": "UBIBOT_CHANNEL=REST node ./test/bankbot.test.js"
   },
   "scripts": {
     "start": "node ./lib/bankbot.js",
@@ -17,7 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "@numical/ubibot-cli": "0.0.1",
-    "@numical/ubibot-config": "0.0.1"
+    "@numical/ubibot-config": "0.0.1",
+    "@numical/ubibot-core": "0.0.1"
   },
   "devDependencies": {
     "@numical/ubibot-rest": "0.0.1",

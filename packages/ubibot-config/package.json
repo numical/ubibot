@@ -12,6 +12,7 @@
   "author": "mike.evans@numical.com",
   "license": "MIT",
   "dependencies": {
+    "@numical/ubibot-core": "0.0.1",
     "ramda": "^0.26.1",
     "yup": "0.26.10"
   },
