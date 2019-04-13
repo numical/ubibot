@@ -13,5 +13,8 @@
     "tape": "^4.10.1"
   },
   "author": "mike.evans@numical.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "natural": "^0.6.3"
+  }
 }
