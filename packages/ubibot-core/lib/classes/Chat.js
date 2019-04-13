@@ -2,8 +2,6 @@ const History = require("./History");
 const Match = require("./Match");
 const { POSSIBLE, PROBABLE } = require("../constants/matchingThresholds");
 
-const nothingMatched = Match.definite(async (request, config) => config.content.notUnderstood);
-
 class Chat {
   constructor(config, state = {}) {
     if (!config) throw new Error("Missing config for new Chat");
@@ -52,7 +50,7 @@ class Chat {
     }
     // catch anything else
     if (!selectedMatch) {
-      selectedMatch = nothingMatched;
+      selectedMatch = Match.definite(async () => config.content.notUnderstood);
     }
     return selectedMatch.command;
   }
