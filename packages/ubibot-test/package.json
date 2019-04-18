@@ -10,6 +10,7 @@
     "test": "tape test/**/*.test.js"
   },
   "devDependencies": {
+    "prettier": "^1.17.0",
     "tape": "^4.10.1"
   },
   "author": "mike.evans@numical.com",

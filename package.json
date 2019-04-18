@@ -2,23 +2,23 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "postinstall": "npx lerna bootstrap",
+    "postinstall": "npx lerna bootstrap --hoist",
     "commit": "git-cz",
     "test": "lerna run test --concurrency=1"
   },
   "devDependencies": {
-    "commitizen": "3.0.7",
+    "commitizen": "3.1.0",
     "cz-emoji": "1.1.2",
     "eslint": "5.16.0",
     "eslint-config-prettier": "4.1.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-const-immutable": "^2.0.0",
-    "eslint-plugin-import": "2.17.0",
+    "eslint-plugin-import": "2.17.2",
     "eslint-plugin-node": "8.0.1",
     "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-promise": "4.1.1",
     "eslint-plugin-standard": "4.0.0",
-    "lerna": "^3.13.2",
+    "lerna": "^3.13.3",
     "lerna-wizard": "^1.0.9",
     "prettier": "^1.17.0"
   }

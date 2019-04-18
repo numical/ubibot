@@ -4,11 +4,6 @@
   "description": "An example domain package demonstrating a bot for servicing a personal bank account.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/bankbot.test.js",
-    "test:cli": "UBIBOT_CHANNEL=CLI node ./test/bankbot.test.js",
-    "test:rest": "UBIBOT_CHANNEL=REST node ./test/bankbot.test.js"
-  },
-  "scripts": {
     "start": "node ./lib/bankbot.js",
     "test": "node ./test/bankbot.test.js"
   },
@@ -24,6 +19,7 @@
   },
   "devDependencies": {
     "@numical/ubibot-rest": "0.0.1",
+    "prettier": "^1.17.0",
     "tape": "^4.10.1"
   }
 }

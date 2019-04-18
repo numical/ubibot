@@ -1,0 +1,9 @@
+bot:Hello. I'm BankBot.  How can I help?
+user:sort code
+bot:The sort code is 01-02-03 and the account number is 0123456789.
+user:sortcode
+bot:The sort code is 01-02-03 and the account number is 0123456789.
+user:account number
+bot:The sort code is 01-02-03 and the account number is 0123456789.
+user:details
+bot:The sort code is 01-02-03 and the account number is 0123456789.

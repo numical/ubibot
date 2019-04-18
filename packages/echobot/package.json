@@ -21,7 +21,8 @@
     "@numical/ubibot-core": "0.0.1"
   },
   "devDependencies": {
-    "@numical/ubibot-rest": "0.0.1"
+    "@numical/ubibot-rest": "0.0.1",
+    "prettier": "^1.17.0"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT"

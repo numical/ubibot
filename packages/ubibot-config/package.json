@@ -17,6 +17,7 @@
     "yup": "0.26.10"
   },
   "devDependencies": {
+    "prettier": "^1.17.0",
     "tape": "^4.10.1"
   }
 }

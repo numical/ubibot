@@ -17,8 +17,9 @@
     "uid-safe": "2.1.5"
   },
   "devDependencies": {
-    "supertest": "3.4.2",
     "@numical/ubibot-test": "0.0.1",
+    "prettier": "^1.17.0",
+    "supertest": "3.4.2",
     "tape": "^4.10.1"
   }
 }
