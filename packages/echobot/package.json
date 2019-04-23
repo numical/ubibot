@@ -8,9 +8,9 @@
   },
   "scripts": {
     "start": "node ./lib/echo.js",
-    "test": "node ./test/echo.test.js",
-    "test:cli": "UBIBOT_CHANNEL=CLI node ./test/echo.test.js",
-    "test:rest": "UBIBOT_CHANNEL=REST node ./test/echo.test.js"
+    "test": "node ./test/echo.test.js | faucet",
+    "test:cli": "UBIBOT_CHANNEL=CLI node ./test/echo.test.js | faucet",
+    "test:rest": "UBIBOT_CHANNEL=REST node ./test/echo.test.js | faucet"
   },
   "bin": {
     "echobot": "./lib/echo.js"
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@numical/ubibot-rest": "0.0.1",
+    "faucet": "0.0.1",
     "prettier": "^1.17.0"
   },
   "author": "mike.evans@numical.com",

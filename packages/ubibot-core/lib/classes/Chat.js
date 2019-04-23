@@ -1,6 +1,13 @@
+const { BrillPOSTagger, Lexicon, RuleSet, WordTokenizer } = require("natural");
 const History = require("./History");
 const Match = require("./Match");
 const { POSSIBLE, PROBABLE } = require("../constants/matchingThresholds");
+const { orderTaggedWords } = require("./posTags");
+
+const tokenizer = new WordTokenizer();
+const lexicon = new Lexicon("EN", "N");
+const ruleset = new RuleSet("EN");
+const tagger = new BrillPOSTagger(lexicon, ruleset);
 
 class Chat {
   constructor(config, state = {}) {
@@ -25,13 +32,25 @@ class Chat {
     return hello;
   }
 
+  identifyPrincipleConcept(request) {
+    const tokens = tokenizer.tokenize(request);
+    if (tokens.length === 1) {
+      return tokens[0];
+    } else {
+      const { taggedWords } = tagger.tag(tokens);
+      orderTaggedWords(taggedWords);
+      return taggedWords[0].token;
+    }
+  }
+
   async selectCommand(request) {
     const { config, contexts } = this;
+    const command = this.identifyPrincipleConcept(request);
     let selectedMatch;
     // look for probable command in user's contexts
     while (contexts.length > 0) {
       const currentContext = contexts.pop();
-      const bestMatch = currentContext.match(request);
+      const bestMatch = currentContext.match(command);
       if (bestMatch.score >= POSSIBLE) {
         contexts.push(currentContext);
         selectedMatch = bestMatch;
@@ -41,7 +60,7 @@ class Chat {
     // score engine in any context and select highest
     if (!selectedMatch) {
       const bestMatch = config.contexts
-        .map(context => context.match(request))
+        .map(context => context.match(command))
         .reduce((bestMatch, match) => (bestMatch.score > match.score ? bestMatch : match));
       if (bestMatch.score >= PROBABLE) {
         contexts.push(bestMatch.context);

@@ -2,6 +2,7 @@ const { EOL } = require("os");
 const fs = require("fs");
 const { resolve } = require("path");
 const { promisify } = require("util");
+const compose = require("ramda/src/compose");
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
@@ -9,7 +10,7 @@ const readFile = promisify(fs.readFile);
 const readFilesContents = async (dir, files, prefix) => {
   const fileContents = await Promise.all(files.map(file => readFile(resolve(dir, file.name), "utf-8")));
   return files.reduce((scripts, file, index) => {
-    const key = prefix ? `${prefix}-${file.name}` : file.name;
+    const key = prefix ? `${prefix}/${file.name}` : file.name;
     scripts[key] = fileContents[index]
       .split(EOL)
       .filter(line => line.length > 0)
@@ -28,21 +29,34 @@ const readDirectoryContents = async (dir, prefix) => {
     : subdirs.reduce(async (contentsPromise, subdir) => {
         const contents = await contentsPromise;
         const subDirPath = resolve(dir, subdir.name);
-        const subDirPrefix = prefix ? `${prefix}-${subdir.name}` : subdir.name;
+        const subDirPrefix = prefix ? `${prefix}/${subdir.name}` : subdir.name;
         const subDirContents = await readDirectoryContents(subDirPath, subDirPrefix);
         return { ...contents, ...subDirContents };
       }, Promise.resolve(contents));
 };
 
-const createCache = async dir => {
-  cached = await readDirectoryContents(dir);
-  return cached;
+const filterForOnlyScripts = async scriptsPromise => {
+  const scripts = await scriptsPromise;
+  const onlyScripts = Object.entries(scripts).filter(([key, contents]) => contents[0].trim() === "only");
+  return onlyScripts.length === 0
+    ? scripts
+    : onlyScripts.reduce((scripts, [key, contents]) => {
+        scripts[key] = contents.slice(1);
+        return scripts;
+      }, {});
 };
 
-const loadScripts = async path => {
-  return cached || createCache(path);
+const filterForIgnoreScripts = async scriptsPromise => {
+  const scripts = await scriptsPromise;
+  const unignoredScripts = Object.entries(scripts).filter(([key, contents]) => contents[0].trim() !== "ignore");
+  return unignoredScripts.reduce((scripts, [key, contents]) => {
+    scripts[key] = contents;
+    return scripts;
+  }, {});
 };
 
-let cached = null;
-
-module.exports = loadScripts;
+module.exports = compose(
+  filterForIgnoreScripts,
+  filterForOnlyScripts,
+  readDirectoryContents
+);

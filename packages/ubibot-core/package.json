@@ -7,15 +7,16 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "tape test/**/*.test.js"
+    "test": "echo \"ubibot-core: currently no unit tests.\""
+  },
+  "dependencies": {
+    "natural": "github:NaturalNode/natural"
   },
   "devDependencies": {
+    "faucet": "0.0.1",
     "prettier": "^1.17.0",
     "tape": "^4.10.1"
   },
   "author": "mike.evans@numical.com",
-  "license": "MIT",
-  "dependencies": {
-    "natural": "^0.6.3"
-  }
+  "license": "MIT"
 }

@@ -7,9 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "tape test/**/*.test.js"
+    "test": "tape test/**/*.test.js | faucet"
   },
   "devDependencies": {
+    "faucet": "0.0.1",
     "prettier": "^1.17.0",
     "tape": "^4.10.1"
   },

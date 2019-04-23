@@ -27,6 +27,22 @@ Use this library along with a channel-specific test runner to create 'black-box'
 1. Select a test runner supplied by a channel package such as [ubibot-cli](../ubibot-cli/README.md);
 1. Combine in a test module - see [bankbot.test.js](../echobot/test/echo.test.js) for an example.
 
+## test file syntax
+* first line can optionally contain one of these commands:
+    - ```ignore``` ignore this script
+    - ```only``` run only this (and other ```only```) scripts
+* otherwise all lines must be prefixed with the source:
+    - ```bot:``` what ubibot is expected to say;
+    - ```user:``` what the user is expected to say;
+* there should be __no space__ between the prefix and the expected value:
+    ```
+    ubibot:Hello << correct
+    ubibit: Hello << incorrect
+    ```
+* the first prefixed line will be ubibot's initial prompt when started;
+* the last line should be ubitbot's final response;
+
+
 ## the future
 Basic conversational user interfaces lend themselves to straightforward 'black box' testing, due to their [repl](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) -style semantics.  
 The above [approach](#approach) offers a simple means to assert a script of question/answers.

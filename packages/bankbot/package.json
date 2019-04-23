@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./lib/bankbot.js",
-    "test": "node ./test/bankbot.test.js"
+    "test": "node ./test/bankbot.test.js | faucet",
+    "test:cli": "UBIBOT_CHANNEL=CLI node ./test/bankbot.test.js | faucet",
+    "test:rest": "UBIBOT_CHANNEL=REST node ./test/bankbot.test.js | faucet"
   },
   "bin": {
     "echobot": "./lib/bankbot.js"
@@ -15,11 +17,14 @@
   "dependencies": {
     "@numical/ubibot-cli": "0.0.1",
     "@numical/ubibot-config": "0.0.1",
-    "@numical/ubibot-core": "0.0.1"
+    "@numical/ubibot-core": "0.0.1",
+    "tap-summary": "^4.0.0"
   },
   "devDependencies": {
     "@numical/ubibot-rest": "0.0.1",
+    "faucet": "0.0.1",
     "prettier": "^1.17.0",
+    "tap-min": "^2.0.0",
     "tape": "^4.10.1"
   }
 }
