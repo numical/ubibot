@@ -1,9 +1,9 @@
 const Koa = require("koa");
 const Body = require("koa-body");
-const Router = require("koa-router");
-const { notImplemented, methodNotAllowed } = require("boom");
-const endPoints = require("./endPoints");
 const { Chat } = require("@numical/ubibot-core");
+const endPoints = require("./endPoints");
+const addHeaders = require("./addHeaders");
+const addRouter = require("./addRouter");
 
 const defaultOptions = {
   port: 1971,
@@ -18,7 +18,7 @@ const startReST = (config, options) => {
     response.status = 200;
   };
 
-  const newChat = async ({ request, response }) => {
+  const newChat = async ({ response }) => {
     const chatId = await idGenerator();
     const chat = new Chat(config);
     await store.set(chatId, chat.getState());
@@ -41,18 +41,9 @@ const startReST = (config, options) => {
 
   const createApp = () => {
     const app = new Koa();
-    const router = new Router();
-
     app.use(new Body());
-    app.use(
-      router.allowedMethods({
-        throw: true,
-        notImplemented,
-        methodNotAllowed
-      })
-    );
-    app.use(router.routes());
-
+    addHeaders(app);
+    const router = addRouter(app);
     router.get(endPoints.healthCheck, healthCheck);
     router.post(endPoints.newChat, newChat);
     router.post(endPoints.chat(":chatId"), continueChat);

@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./lib/bankbot.js",
+    "start:cli": "UBIBOT_CHANNEL=CLI node ./lib/bankbot.js",
+    "start:rest": "UBIBOT_CHANNEL=REST node ./lib/bankbot.js",
     "test": "node ./test/bankbot.test.js | faucet",
     "test:cli": "UBIBOT_CHANNEL=CLI node ./test/bankbot.test.js | faucet",
     "test:rest": "UBIBOT_CHANNEL=REST node ./test/bankbot.test.js | faucet"
