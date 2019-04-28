@@ -4,29 +4,26 @@
   "description": "An example domain package demonstrating a bot for servicing a personal bank account.",
   "main": "index.js",
   "scripts": {
-    "start": "node ./lib/bankbot.js",
-    "start:cli": "UBIBOT_CHANNEL=CLI node ./lib/bankbot.js",
-    "start:rest": "UBIBOT_CHANNEL=REST node ./lib/bankbot.js",
-    "test": "node ./test/bankbot.test.js | faucet",
-    "test:cli": "UBIBOT_CHANNEL=CLI node ./test/bankbot.test.js | faucet",
-    "test:rest": "UBIBOT_CHANNEL=REST node ./test/bankbot.test.js | faucet"
+    "start": "node bankbot.js",
+    "start:cli": "UBIBOT_CHANNEL=CLI node bankbot.js",
+    "start:rest": "UBIBOT_CHANNEL=REST node bankbot.js",
+    "test": "node bankbot.test.js | faucet",
+    "test:cli": "UBIBOT_CHANNEL=CLI node bankbot.test.js | faucet",
+    "test:rest": "UBIBOT_CHANNEL=REST node bankbot.test.js | faucet"
   },
   "bin": {
-    "echobot": "./lib/bankbot.js"
+    "echobot": "bankbot.js"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT",
   "dependencies": {
-    "@numical/ubibot-cli": "0.0.1",
-    "@numical/ubibot-config": "0.0.1",
-    "@numical/ubibot-core": "0.0.1",
-    "tap-summary": "^4.0.0"
+    "@numical/ubibot-channel-cli": "0.0.1",
+    "@numical/ubibot-domain-bank": "0.0.1"
   },
   "devDependencies": {
-    "@numical/ubibot-rest": "0.0.1",
+    "@numical/ubibot-channel-rest": "0.0.1",
     "faucet": "0.0.1",
     "prettier": "^1.17.0",
-    "tap-min": "^2.0.0",
     "tape": "^4.10.1"
   }
 }

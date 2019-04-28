@@ -7,10 +7,12 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"ubibot-core: currently no unit tests.\""
+    "test": "tape test/**/*.test.js | faucet"
   },
   "dependencies": {
-    "natural": "github:NaturalNode/natural"
+    "natural": "github:NaturalNode/natural",
+    "ramda": "^0.26.1",
+    "yup": "0.26.10"
   },
   "devDependencies": {
     "faucet": "0.0.1",

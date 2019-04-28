@@ -1,0 +1,20 @@
+{
+  "name": "@numical/ubibot-channel-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"ubibot-channel-cli: use exported function testCLI() in a domain plugin such as ubibot-echo.\""
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT",
+  "dependencies": {
+    "@numical/ubibot-core": "0.0.1"
+  },
+  "devDependencies": {
+    "@numical/ubibot-test": "0.0.1",
+    "memorystream": "0.3.1",
+    "prettier": "^1.17.0",
+    "tape": "^4.10.1"
+  }
+}
