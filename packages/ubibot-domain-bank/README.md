@@ -1,5 +1,5 @@
 # bankbot
-An example ubibot application demonstrating a bot for servicing a personal bank account.  
+An example domain package demonstrating a bot for servicing a personal bank account.  
 This will be an ubibot rewrite of [an earlier bankbot implementation](https://github.com/numical/bankbot).  
 Currently **alpha** code.
 
@@ -10,9 +10,7 @@ npm install @numical/bankbot
 
 ## usage
 ```bash
-npm start  << for CLI
-npm run start:rest << for HTTP server
-npm test << for testing against both CLI and ReST channels
+npx bankbot
 ```
 The premise:  
 You are a bank customer who wishes to service their personal current account.  

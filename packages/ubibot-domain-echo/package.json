@@ -1,0 +1,17 @@
+{
+  "name": "@numical/ubibot-domain-echo",
+  "version": "0.0.1",
+  "description": "The simplest possible ubibot domain.",
+  "main": "api.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@numical/ubibot-core": "0.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^1.17.0"
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT"
+}

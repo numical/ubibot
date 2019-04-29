@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "clean": "rimraf ./**/package-lock.json && npx lerna clean --yes",
     "postinstall": "npx lerna bootstrap --hoist",
     "commit": "git-cz",
     "test": "lerna run test --concurrency=1"
@@ -19,8 +20,9 @@
     "eslint-plugin-promise": "4.1.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-standard": "4.0.0",
-    "lerna": "^3.13.3",
+    "lerna": "^3.13.4",
     "lerna-wizard": "^1.0.9",
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "rimraf": "^2.6.3"
   }
 }

@@ -10,29 +10,36 @@ Currently **alpha** code
 
 ## about
 Ubibot is to designd to hold very simple conversations within a strictly limited context.  
+It is **not** a general purpose, natural language interface.  
 
-Any single ubibot implementation consists of:
-* a **domain package** that supplies the context-specific content and logic;
-* **core packages** that are libraries of boilerplate fuctionality - these include **channel packages** which provide the client interface to ubibot. 
+Any single ubibot application brings together one or more:
+* **domain packages** that supply the context-specific content and logic;
+* **channel packages** that supply the runtime and user interface.
 
-## entry points
-Example domain packages:
-* [@numical/echobot](packages/echobot/README.md): the simplest possible ubibot domain;
-* [@numical/bankbot](packages/bankbot/README.md): demonstrates a bot for servicing a personal bank account.
+These packages are dependent on the **core packages** supplied by this repo.
 
-## core packages
-* [@numical/ubibot-config](packages/ubibot-config/README.md): a library to generate the configuration passed to an ubibot implementation;
+### sample applications
+These are good entry points to understanding the ubibot ecosystem:
+* [@numical/echobot](packages/echobot/README.md): the simplest possible ubibot application brining together a domain that echoes user input with a command line interface;
+* [@numical/bankbot](packages/bankbot/README.md): a more fully featured bot that services a fictional personal bank account via a variety of user interfaces.
+
+### domain packages
+These are built on top of classes and functions supplied by [@numical/ubibot-core](packages/ubibot-core/README.md).  
+Ultimately they export a ```configuration``` object that is passed to a channel package for running.  
+Examples provided are:
+
+* [@numical/ubibot-domain-echo](packages/ubibot-domain-echo/README.md):  simple echo functionality;
+* [@numical/ubibot-domain-bank](packages/ubibot-domain-bank/README.md):  servicing a fictional personal current account.
+
+### channel packages
+Provide runtimes and IO for Ubibot:
+* [@numica/ubibot-channel-cli](packages/ubibot-channel-cli/README.md): a command line interface for ubibot;
+* [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md): a channel package for accessing a multi-user implementation of ubibot via a [HTTP ReST](https://www.restapitutorial.com/lessons/httpmethods.html) calls; 
+* [@numical/ubibit-channel-webapp](packages/ubibot-channel-webapp/README.md): a web-based chat interface calling an ubibot runtime hosted by [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md).
+
+### core packages
 * [@numical/ubibot-core](packages/ubibot-core/README.md): the core 'engine' and utility functions or ubibot;
-* [@numical/ubibot-test](packages/ubibot-test/README.md): a package to support testing.
+* [@numical/ubibot-test](packages/ubibot-test/README.md): Ubibot is friendly but serious - testing is a first-class concern for the framework;
+* [@numical/ubibot-utils](packages/ubibot-utils/README.md): general utilities to support the framework.
 
-## channel packages
-The various IO options for Ubibot:
-* [@numica/ubibot-cli](packages/ubibot-cli/README.md): a command line interface for ubibot; the simplest possible channel package;
-* [@numical/ubibot-rest](packages/ubibot-rest/README.md): a channel package for accessing a multi-user implementation of ubibot via a [HTTP ReST](https://www.restapitutorial.com/lessons/httpmethods.html) calls; 
-
-
-## testing
-Ubibot is friendly but serious.  
-Testing is a first-class concern for the framework.  
-The [@numical/ubibot-test](./packages/ubibot-test/README.md) package details the testing options available.
 

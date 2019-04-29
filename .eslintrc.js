@@ -6,10 +6,11 @@ module.exports = {
     node: true
   },
   extends: ["standard", "plugin:prettier/recommended", "plugin:react/recommended"],
+
   parserOptions: {
     ecmaVersion: 2018
   },
-  plugins: ["prettier", "const-immutable"],
+  plugins: ["prettier", "const-immutable", "react"],
   rules: {
     "prettier/prettier": [
       "error",
@@ -17,6 +18,7 @@ module.exports = {
         printWidth: 120
       }
     ],
-    "const-immutable/no-mutation": 2
+    "const-immutable/no-mutation": 2,
+    "no-unused-vars": ["error", { varsIgnorePattern: "React" }]
   }
 };

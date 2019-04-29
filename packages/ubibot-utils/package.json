@@ -1,0 +1,19 @@
+{
+  "name": "@numical/ubibot-utils",
+  "version": "0.0.1",
+  "description": "General utilities to support ubibot libraries",
+  "main": "api.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "tape test/**/*.test.js | faucet"
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT",
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "prettier": "^1.17.0",
+    "tape": "^4.10.1"
+  }
+}

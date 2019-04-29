@@ -1,27 +1,20 @@
 {
   "name": "@numical/echobot",
   "version": "0.0.1",
-  "description": "The simplest possible ubibot domain.",
-  "main": "index.js",
+  "description": "The simplest possible ubibot application.",
+  "main": "echo.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "start": "node ./lib/echo.js",
-    "test": "node ./test/echo.test.js | faucet",
-    "test:cli": "UBIBOT_CHANNEL=CLI node ./test/echo.test.js | faucet",
-    "test:rest": "UBIBOT_CHANNEL=REST node ./test/echo.test.js | faucet"
-  },
-  "bin": {
-    "echobot": "./lib/echo.js"
+    "start": "node echo.js",
+    "test": "node echo.test.js | faucet"
   },
   "dependencies": {
-    "@numical/ubibot-cli": "0.0.1",
-    "@numical/ubibot-config": "0.0.1",
-    "@numical/ubibot-core": "0.0.1"
+    "@numical/ubibot-channel-cli": "0.0.1",
+    "@numical/ubibot-domain-echo": "0.0.1"
   },
   "devDependencies": {
-    "@numical/ubibot-rest": "0.0.1",
     "faucet": "0.0.1",
     "prettier": "^1.17.0"
   },
