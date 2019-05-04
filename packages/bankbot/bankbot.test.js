@@ -1,6 +1,6 @@
-const { testCLI } = require("@numical/ubibot-channel-cli");
-const { testReST } = require("@numical/ubibot-channel-rest");
-const { config } = require("@numical/ubibot-domain-bank");
+const { testCLI } = require("@numical/ubibot-channel-cli/");
+const { testReST } = require("@numical/ubibot-channel-rest/");
+const { config } = require("@numical/ubibot-domain-bank/");
 
 const possibleTests = {
   CLI: testCLI.bind(null, "Domain: bankbot; Channel: CLI", config),

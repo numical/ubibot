@@ -2,7 +2,7 @@
   "name": "@numical/ubibot-domain-bank",
   "version": "0.0.1",
   "description": "An example domain package demonstrating a bot for servicing a personal bank account.",
-  "main": "api.js",
+  "main": "index.js",
   "author": "mike.evans@numical.com",
   "license": "MIT",
   "dependencies": {

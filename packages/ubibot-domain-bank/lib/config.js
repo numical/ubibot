@@ -1,5 +1,5 @@
 const path = require("path");
-const { configure } = require("@numical/ubibot-core");
+const { configure } = require("@numical/ubibot-core/");
 const content = require("./content");
 const contexts = require("./contexts");
 

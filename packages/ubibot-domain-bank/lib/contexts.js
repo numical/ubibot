@@ -1,4 +1,4 @@
-const { Context } = require("@numical/ubibot-core");
+const { Context } = require("@numical/ubibot-core/");
 const help = require("./commands/help");
 const balance = require("./commands/balance");
 const accountDetails = require("./commands/accountDetails");

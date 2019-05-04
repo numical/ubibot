@@ -2,7 +2,7 @@
   "name": "@numical/ubibot-domain-echo",
   "version": "0.0.1",
   "description": "The simplest possible ubibot domain.",
-  "main": "api.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },

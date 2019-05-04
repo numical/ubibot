@@ -1,25 +1,32 @@
 import React, { Component } from "react";
 import { Widget, addResponseMessage } from "react-chat-widget";
+import { Chat } from "@numical/ubibot-core/";
+import config from "../webbot/config";
 import "react-chat-widget/lib/styles.css";
 
+/*
 const options = {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   }
 };
+*/
 
 class App extends Component {
   constructor(props) {
     super(props);
+    /*
     this.state = {
       chatId: undefined,
       endpoint: "http://localhost:1971/chat"
     };
     this.setState = this.setState.bind(this);
-    this.chat = this.chat.bind(this);
+         */
+    this.chat = new Chat(config);
   }
 
+  /*
   async chat(msg) {
     try {
       console.log("chat", msg);
@@ -40,14 +47,22 @@ class App extends Component {
     }
   }
 
+   */
+
   componentDidMount() {
-    this.chat();
+    const { chat } = this;
+    addResponseMessage(chat.hello());
+  }
+
+  async handleNewUserMessage(request) {
+    const { chat } = this;
+    const response = await chat.respondTo(request);
+    addResponseMessage(response);
   }
 
   render() {
-    const { chat } = this;
     const props = {
-      handleNewUserMessage: chat,
+      handleNewUserMessage: this.handleNewUserMessage,
       title: "Ubibot Web App",
       subtitle: ""
     };

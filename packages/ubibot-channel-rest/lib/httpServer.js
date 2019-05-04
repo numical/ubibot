@@ -1,6 +1,6 @@
 const Koa = require("koa");
 const Body = require("koa-body");
-const { Chat } = require("@numical/ubibot-core");
+const { Chat } = require("@numical/ubibot-core/");
 const endPoints = require("./endPoints");
 const addHeaders = require("./addHeaders");
 const addRouter = require("./addRouter");

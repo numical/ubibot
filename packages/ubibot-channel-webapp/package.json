@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/preset-env": "^7.4.4",
+    "@numical/ubibot-core": "0.0.1",
     "core-js": "^3.0.1",
     "react": "^16.8.6",
     "react-chat-widget": "^2.1.4-1",

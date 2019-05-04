@@ -1,6 +1,6 @@
 const { EOL } = require("os");
 const readline = require("readline");
-const { Chat } = require("@numical/ubibot-core");
+const { Chat } = require("@numical/ubibot-core/");
 
 const startCLI = (config, { stdin, stdout } = process) => {
   if (!config) {

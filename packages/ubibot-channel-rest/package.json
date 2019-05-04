@@ -2,7 +2,7 @@
   "name": "@numical/ubibot-channel-rest",
   "version": "0.0.1",
   "description": "",
-  "main": "api.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"ubibot-channel-rest: use exported function testReST() in a domain plugin such as ubibot-echo.\""
   },

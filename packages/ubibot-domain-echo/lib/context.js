@@ -1,4 +1,4 @@
-const { Context, Match } = require("@numical/ubibot-core");
+const { Context, Match } = require("@numical/ubibot-core/");
 const echoCommand = require("./command");
 
 class EchoContext extends Context {

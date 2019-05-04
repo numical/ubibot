@@ -2,7 +2,7 @@
   "name": "@numical/ubibot-core",
   "version": "0.0.1",
   "description": "Core engine of ubibot framework.",
-  "main": "api.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },
@@ -10,7 +10,7 @@
     "test": "tape test/**/*.test.js | faucet"
   },
   "dependencies": {
-    "natural": "github:NaturalNode/natural",
+    "@numical/ubibot-natural-language": "0.0.1",
     "ramda": "^0.26.1",
     "yup": "0.26.10"
   },

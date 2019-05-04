@@ -6,5 +6,5 @@ const context = require("./context");
 module.exports = configure({
   content,
   contexts: [context],
-  scriptsDir: path.resolve(__dirname, "../scripts")
+  scriptsDir: path.resolve(__dirname, "../../scripts")
 });

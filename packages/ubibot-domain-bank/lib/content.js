@@ -1,5 +1,5 @@
 /* eslint no-template-curly-in-string: 0 */
-const { createContentTemplate } = require("@numical/ubibot-utils");
+const { createContentTemplate } = require("@numical/ubibot-utils/");
 
 module.exports = Object.freeze({
   hello: "Hello. I'm BankBot.  How can I help?",

@@ -1,4 +1,4 @@
-const { BrillPOSTagger, Lexicon, RuleSet, WordTokenizer } = require("natural");
+const { BrillPOSTagger, Lexicon, RuleSet, WordTokenizer } = require("@numical/ubibot-natural-language");
 const History = require("./History");
 const Match = require("./Match");
 const { POSSIBLE, PROBABLE } = require("../constants/matchingThresholds");

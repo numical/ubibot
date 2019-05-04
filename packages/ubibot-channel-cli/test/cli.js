@@ -1,8 +1,8 @@
 const { EOL } = require("os");
 const MemoryStream = require("memorystream");
 const { test } = require("tape");
-const { loadScripts } = require("@numical/ubibot-test");
-const { prefixes } = require("@numical/ubibot-core");
+const { loadScripts } = require("@numical/ubibot-test/");
+const { prefixes } = require("@numical/ubibot-core/");
 const { startCLI } = require("../lib/cli");
 
 const { botPrefix, userPrefix, delimiter } = prefixes;
