@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "clean": "rimraf ./**/package-lock.json && npx lerna clean --yes",
-    "postinstall": "npx lerna bootstrap --hoist",
+    "postinstall": "npx lerna bootstrap --hoist --nohoist natural",
     "commit": "git-cz",
     "test": "lerna run test --concurrency=1"
   },
