@@ -4,8 +4,7 @@ const validateConfig = require("./validateConfig");
 
 const config = {
   content: defaultContent,
-  contexts: [defaultContext],
-  scriptsDir: __dirname
+  contexts: [defaultContext]
 };
 validateConfig(config);
 

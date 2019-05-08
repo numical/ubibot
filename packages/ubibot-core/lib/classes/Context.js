@@ -1,5 +1,4 @@
 const { JaroWinklerDistance } = require("@numical/ubibot-natural-language");
-const { calcScore } = JaroWinklerDistance;
 const { noMatch } = require("./Match");
 
 class Context {
@@ -21,7 +20,7 @@ class Context {
 
   match(userCommand) {
     const reducerFn = (bestMatch, command, index) => {
-      const score = calcScore(command, userCommand);
+      const score = JaroWinklerDistance(command, userCommand);
       if (score > bestMatch.score) {
         bestMatch.score = score;
         bestMatch.command = this.fns[index];

@@ -62,9 +62,8 @@ const runTestScript = (config, script, test) => {
   script.forEach(parseScriptLine);
 };
 
-const testCLI = async (name, config) => {
+const testCLI = async (name, config, scriptsDir) => {
   test(name, async testSuite => {
-    const { scriptsDir } = config;
     const scripts = await loadScripts(scriptsDir);
     testSuite.plan(scripts.length);
     Object.entries(scripts).forEach(([name, script]) => {

@@ -3,11 +3,12 @@ const parseURL = require("./parseURL");
 
 class WebBotContext extends Context {
   constructor() {
-    super("Webbot");
+    super("WebBot");
   }
+
   match() {
     return Match.definite(parseURL, this);
   }
 }
 
-module.exports = new WebBotContext();
+module.exports = WebBotContext;

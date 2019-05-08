@@ -18,4 +18,4 @@ class DefaultContext extends Context {
   }
 }
 
-module.exports = new DefaultContext();
+module.exports = DefaultContext;

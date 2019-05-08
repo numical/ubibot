@@ -46,9 +46,8 @@ const runTestScript = async (app, script, test) => {
   test.end();
 };
 
-const testReST = async (name, config) => {
+const testReST = async (name, config, scriptsDir) => {
   test(name, async testSuite => {
-    const { scriptsDir } = config;
     const scripts = await loadScripts(scriptsDir);
     testSuite.plan(scripts.length);
     const server = startReST(config, { idGenerator });

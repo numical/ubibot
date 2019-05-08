@@ -7,16 +7,22 @@ const compose = require("ramda/src/compose");
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
 
-const readFilesContents = async (dir, files, prefix) => {
-  const fileContents = await Promise.all(files.map(file => readFile(resolve(dir, file.name), "utf-8")));
-  return files.reduce((scripts, file, index) => {
-    const key = prefix ? `${prefix}/${file.name}` : file.name;
-    scripts[key] = fileContents[index]
-      .split(EOL)
-      .filter(line => line.length > 0)
-      .filter(line => !line.startsWith("#"));
-    return scripts;
-  }, {});
+const checkDirectory = dir => {
+  try {
+    const stats = fs.statSync(dir);
+    if (stats.isDirectory()) {
+      return dir;
+    } else {
+      throw new Error(`scriptsDir '${dir}' must be a directory`);
+    }
+  } catch (error) {
+    switch (error.code) {
+      case "ENOENT":
+        throw new Error(`scriptsDir '${dir}' must exist`);
+      default:
+        throw new Error(`accessing scriptsDir '${dir}' throws error ${error}`);
+    }
+  }
 };
 
 const readDirectoryContents = async (dir, prefix) => {
@@ -33,6 +39,18 @@ const readDirectoryContents = async (dir, prefix) => {
         const subDirContents = await readDirectoryContents(subDirPath, subDirPrefix);
         return { ...contents, ...subDirContents };
       }, Promise.resolve(contents));
+};
+
+const readFilesContents = async (dir, files, prefix) => {
+  const fileContents = await Promise.all(files.map(file => readFile(resolve(dir, file.name), "utf-8")));
+  return files.reduce((scripts, file, index) => {
+    const key = prefix ? `${prefix}/${file.name}` : file.name;
+    scripts[key] = fileContents[index]
+      .split(EOL)
+      .filter(line => line.length > 0)
+      .filter(line => !line.startsWith("#"));
+    return scripts;
+  }, {});
 };
 
 const filterForOnlyScripts = async scriptsPromise => {
@@ -58,5 +76,6 @@ const filterForIgnoreScripts = async scriptsPromise => {
 module.exports = compose(
   filterForIgnoreScripts,
   filterForOnlyScripts,
-  readDirectoryContents
+  readDirectoryContents,
+  checkDirectory
 );

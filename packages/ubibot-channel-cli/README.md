@@ -28,7 +28,9 @@ This also offers a test runner for the CLI channel:
 const { testCLI } = require("@numical/ubibot-channel-cli");
 const { config } = require("an ubibot domain package");
 
-testCLI("My Domain Tests", config);
+const scriptsDir = path.resolve(...);
+
+testCLI("My Domain Tests", config, scriptDir);
 
 ```
 See [@numical/ubibot-test](../ubibot-test/README.md) for more on using this test runner.
@@ -49,6 +51,7 @@ This module exports 2 functions:
     __arguments__  
         - name (String): display name for the test  
         - config (Object) : configuration object created by a domain package;
+        - scriptsDir (String) : the fully resolved path of the scripts directory.
     __returns__  
     undefined
 

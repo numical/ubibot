@@ -25,7 +25,7 @@ Use this library along with a channel-specific test runner to create 'black-box'
     ```
 1. Point the [configuration](../ubibot-utils/README.md) ```scriptsDir``` value to this directory;
 1. Select a test runner supplied by a channel package such as [ubibot-channel-cli](../ubibot-channel-cli/README.md);
-1. Combine in a test module - see [bankbot.test.js](../echobot/echo.test.js) for an example.
+1. Combine in a test module - see [bankbot.test.js](../echobot/echobot.test.js) for an example.
 
 ## test file syntax
 * first line can optionally contain one of these commands:

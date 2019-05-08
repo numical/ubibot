@@ -2,13 +2,13 @@
   "name": "@numical/echobot",
   "version": "0.0.1",
   "description": "The simplest possible ubibot application.",
-  "main": "echo.js",
+  "main": "echobot.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "start": "node echo.js",
-    "test": "node echo.test.js | faucet"
+    "start": "node echobot.js",
+    "test": "node echobot.test.js | faucet"
   },
   "dependencies": {
     "@numical/ubibot-channel-cli": "0.0.1",
