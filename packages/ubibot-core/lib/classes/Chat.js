@@ -26,10 +26,16 @@ class Chat {
 
   hello() {
     const { config, history } = this;
-    const { content } = config;
-    const { hello } = content;
+    const { hello } = config.content;
     history.recordResponse(hello);
     return hello;
+  }
+
+  error() {
+    const { config, history } = this;
+    const { error } = config.content;
+    history.recordResponse(error);
+    return error;
   }
 
   identifyPrincipleConcept(request) {
@@ -47,7 +53,7 @@ class Chat {
     const { config, contexts } = this;
     const command = this.identifyPrincipleConcept(request);
     let selectedMatch;
-    // look for probable command in user's contexts
+    // look for possible command in user's contexts
     while (contexts.length > 0) {
       const currentContext = contexts.pop();
       const bestMatch = currentContext.match(command);
@@ -57,7 +63,7 @@ class Chat {
         break;
       }
     }
-    // score engine in any context and select highest
+    // score match in any context and select highest
     if (!selectedMatch) {
       const bestMatch = config.contexts
         .map(context => context.match(command))

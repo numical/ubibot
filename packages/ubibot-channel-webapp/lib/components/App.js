@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Widget, addResponseMessage } from "react-chat-widget";
-import { Chat } from "@numical/ubibot-core/";
-import config from "../webbot/config";
+import { Chat } from "@numical/ubibot-core/"; // only needed for PropTypes check
 import "react-chat-widget/lib/styles.css";
 
 /*
@@ -23,7 +23,7 @@ class App extends Component {
     };
     this.setState = this.setState.bind(this);
          */
-    this.chat = new Chat(config);
+    this.handleNewUserMessage = this.handleNewUserMessage.bind(this);
   }
 
   /*
@@ -50,14 +50,19 @@ class App extends Component {
    */
 
   componentDidMount() {
-    const { chat } = this;
+    const { chat } = this.props;
     addResponseMessage(chat.hello());
   }
 
   async handleNewUserMessage(request) {
-    const { chat } = this;
-    const response = await chat.respondTo(request);
-    addResponseMessage(response);
+    const { chat } = this.props;
+    try {
+      const response = await chat.respondTo(request);
+      addResponseMessage(response);
+    } catch (err) {
+      console.log("App.handleNewUserMessage:", err);
+      addResponseMessage(chat.error());
+    }
   }
 
   render() {
@@ -73,5 +78,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  chat: PropTypes.instanceOf(Chat).isRequired
+};
 
 export default App;

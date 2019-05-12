@@ -8,10 +8,12 @@ module.exports = {
   mode: isProduction ? "production" : "development",
   target: "web",
   devtool: "source-map",
-  entry: "./index.js",
+  entry: {
+    ubibot: "./lib/index.js"
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "ubibot.js"
+    filename: "[name].js"
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -24,11 +26,12 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        exclude: [path.resolve(__dirname, "node_modules")]
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ["style-loader", "css-loader"],
+        exclude: /node_modules(?!\/react-chat-widget)/
       }
     ]
   }

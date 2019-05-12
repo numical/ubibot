@@ -11,4 +11,4 @@ class WebBotContext extends Context {
   }
 }
 
-module.exports = WebBotContext;
+module.exports = new WebBotContext();
