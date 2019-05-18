@@ -15,7 +15,7 @@
     "@numical/ubibot-domain-echo": "0.0.1"
   },
   "devDependencies": {
-    "faucet": "0.0.1",
+    "faucet": "github:numical/faucet",
     "prettier": "^1.17.0"
   },
   "author": "mike.evans@numical.com",

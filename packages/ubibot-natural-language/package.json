@@ -4,13 +4,13 @@
   "description": "Wrapper for natural language processing.",
   "main": "index.js",
   "scripts": {
-    "test": "tape testDependencies.js | faucet"
+    "test": "faucet testDependencies.js"
   },
   "dependencies": {
     "natural": "github:NaturalNode/natural"
   },
   "devDependencies": {
-    "faucet": "0.0.1",
+    "faucet": "github:numical/faucet",
     "prettier": "^1.17.0",
     "tape": "^4.10.1"
   },

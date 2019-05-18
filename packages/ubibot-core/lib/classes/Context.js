@@ -2,7 +2,7 @@ const { JaroWinklerDistance } = require("@numical/ubibot-natural-language");
 const { noMatch } = require("./Match");
 
 class Context {
-  constructor() {
+  constructor(name) {
     this.name = name;
     this.commands = [];
     this.fns = [];

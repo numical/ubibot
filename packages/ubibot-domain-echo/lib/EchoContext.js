@@ -10,4 +10,4 @@ class EchoContext extends Context {
   }
 }
 
-module.exports = new EchoContext();
+module.exports = EchoContext;

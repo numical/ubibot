@@ -1,10 +1,10 @@
 const defaultContent = require("./defaultContent");
-const defaultContext = require("./defaultContext");
+const DefaultContext = require("./DefaultContext");
 const validateConfig = require("./validateConfig");
 
 const config = {
   content: defaultContent,
-  contexts: [defaultContext]
+  contexts: [new DefaultContext()]
 };
 validateConfig(config);
 

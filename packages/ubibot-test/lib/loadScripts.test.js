@@ -1,8 +1,8 @@
 const path = require("path");
 const { test } = require("tape");
-const loadScripts = require("../lib/loadScripts");
+const loadScripts = require("./loadScripts");
 
-const dir = path.resolve(__dirname, "scripts");
+const dir = path.resolve(__dirname, "../scripts");
 
 test("loadScripts", async t => {
   const scripts = await loadScripts(dir);

@@ -1,0 +1,12 @@
+.rcw-widget-container {
+    max-width: 33vw;
+}
+
+.rcw-title, .rcw-response {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
+}
+
+.rcw-client {
+    max-width: 20vw;
+}
+

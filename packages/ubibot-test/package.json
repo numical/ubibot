@@ -7,10 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "tape test/**/*.test.js | faucet"
+    "test": "faucet lib/**/*.test.js"
   },
   "devDependencies": {
-    "faucet": "0.0.1",
+    "faucet": "github:numical/faucet",
     "prettier": "^1.17.0",
     "tape": "^4.10.1"
   },

@@ -11,11 +11,11 @@ class DefaultContext extends Context {
 
   /*
    This is not something you would want to do in your code.
-   A Match.definite() would override any other context.
+   A Match.definite() will override any other context.
    */
   match() {
     return Match.definite(doNotUnderstand, this);
   }
 }
 
-module.exports = new DefaultContext();
+module.exports = DefaultContext;

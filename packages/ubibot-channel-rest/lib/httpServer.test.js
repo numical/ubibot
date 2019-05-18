@@ -1,10 +1,10 @@
 const { EOL } = require("os");
 const request = require("supertest");
 const { test } = require("tape");
-const { loadScripts } = require("@numical/ubibot-test/");
-const { prefixes } = require("@numical/ubibot-core/");
-const { startReST } = require("../lib/httpServer");
-const endPoints = require("../lib/endPoints");
+const { loadScripts } = require("@numical/ubibot-test");
+const { prefixes } = require("@numical/ubibot-core");
+const { startReST } = require("./httpServer");
+const endPoints = require("./endPoints");
 
 const { botPrefix, userPrefix, delimiter } = prefixes;
 

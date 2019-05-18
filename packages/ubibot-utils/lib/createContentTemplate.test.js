@@ -1,7 +1,7 @@
 /* eslint no-template-curly-in-string: 0 */
 
 const { test } = require("tape");
-const createContentTemplate = require("../lib/createContentTemplate");
+const createContentTemplate = require("./createContentTemplate");
 
 const staticString = "She sells sea shells";
 const templateString = "She ${verb} ${noun}";
