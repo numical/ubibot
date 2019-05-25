@@ -1,21 +1,27 @@
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { DefinePlugin } = require("webpack");
 
-const isProduction = process.env.NODE_NV === "production";
+const isProduction = process.env.NODE_ENV === "production";
+
+const outputPath = process.env.UBIBOT_DESTINATION || path.resolve(__dirname, "dist");
 
 module.exports = {
   mode: isProduction ? "production" : "development",
   target: "web",
   devtool: "source-map",
   entry: {
-    ubibot: "./lib/index.js"
+    ubibot: "./index.js"
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: outputPath,
     filename: "[name].js"
   },
   plugins: [
+    new DefinePlugin({
+      UBIBOT_SOURCE: `"${process.env.UBIBOT_SOURCE}"`
+    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./index.html"

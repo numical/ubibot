@@ -60,3 +60,6 @@ typings/
 # IDE
 .idea/
 
+# builds
+dist/
+

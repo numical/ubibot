@@ -35,7 +35,7 @@ Examples provided are:
 Provide runtimes and IO for Ubibot:
 * [@numica/ubibot-channel-cli](packages/ubibot-channel-cli/README.md): a command line interface for ubibot;
 * [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md): a channel package for accessing a multi-user implementation of ubibot via a [HTTP ReST](https://www.restapitutorial.com/lessons/httpmethods.html) calls; 
-* [@numical/ubibit-channel-webapp](packages/ubibot-channel-webapp/README.md): a web-based chat interface calling an ubibot runtime hosted by [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md).
+* [@numical/ubibit-channel-webapp](packages/ubibot-webapp-generator/README.md): a web-based chat interface calling an ubibot runtime hosted by [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md).
 
 ### core packages
 * [@numical/ubibot-core](packages/ubibot-core/README.md): the core 'engine' and utility functions or ubibot;
