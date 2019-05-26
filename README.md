@@ -22,6 +22,7 @@ These packages are dependent on the **core packages** supplied by this repo.
 These are good entry points to understanding the ubibot ecosystem:
 * [@numical/echobot](packages/echobot/README.md): the simplest possible ubibot application brining together a domain that echoes user input with a command line interface;
 * [@numical/bankbot](packages/bankbot/README.md): a more fully featured bot that services a fictional personal bank account via a variety of user interfaces.
+* [@numical/webbot](packages/webbot/README.md): a web-based chat interface for calling any server-based ubibot runtime hosted by [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md).
 
 ### domain packages
 These are built on top of classes and functions supplied by [@numical/ubibot-core](packages/ubibot-core/README.md).  
@@ -35,11 +36,14 @@ Examples provided are:
 Provide runtimes and IO for Ubibot:
 * [@numica/ubibot-channel-cli](packages/ubibot-channel-cli/README.md): a command line interface for ubibot;
 * [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md): a channel package for accessing a multi-user implementation of ubibot via a [HTTP ReST](https://www.restapitutorial.com/lessons/httpmethods.html) calls; 
-* [@numical/ubibit-channel-webapp](packages/ubibot-webapp-generator/README.md): a web-based chat interface calling an ubibot runtime hosted by [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md).
 
 ### core packages
 * [@numical/ubibot-core](packages/ubibot-core/README.md): the core 'engine' and utility functions or ubibot;
 * [@numical/ubibot-test](packages/ubibot-test/README.md): Ubibot is friendly but serious - testing is a first-class concern for the framework;
 * [@numical/ubibot-utils](packages/ubibot-utils/README.md): general utilities to support the framework.
+
+### build packages
+* [@numical/ubibot-webapp-generator](packages/ubibot-webapp-generator/README.md): a dev tool to build a hosting web app for an Ubibot implementation - see [@numical/webbot](packages/webbot/README.md) for any example of usage
+
 
 
