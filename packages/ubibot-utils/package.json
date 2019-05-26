@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "faucet lib/**/*.test.js"
+    "test": "tape lib/createContentTemplate.test.js | faucet"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT",

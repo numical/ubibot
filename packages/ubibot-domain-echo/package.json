@@ -12,6 +12,9 @@
   "devDependencies": {
     "prettier": "^1.17.0"
   },
+  "scripts": {
+    "test": "echo \"ubibot-domain-echo: no tests\""
+  },
   "author": "mike.evans@numical.com",
   "license": "MIT"
 }

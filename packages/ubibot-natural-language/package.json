@@ -4,7 +4,7 @@
   "description": "Wrapper for natural language processing.",
   "main": "index.js",
   "scripts": {
-    "test": "faucet testDependencies.js"
+    "test": "tape testDependencies.js | faucet"
   },
   "dependencies": {
     "natural": "github:NaturalNode/natural"

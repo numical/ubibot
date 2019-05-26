@@ -11,5 +11,8 @@
   },
   "devDependencies": {
     "prettier": "^1.17.0"
+  },
+  "scripts": {
+    "test": "echo \"ubibot-domain-bank: no tests\""
   }
 }

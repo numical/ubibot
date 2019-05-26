@@ -7,7 +7,8 @@
   },
   "scripts": {
     "start": "start lib/webbot",
-    "build" : "build lib/webbot dist"
+    "build" : "build lib/webbot dist",
+    "test": "echo \"webbot: no tests\""
   },
   "dependencies": {
     "@numical/ubibot-core": "0.0.1"

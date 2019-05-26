@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "faucet lib/**/*.test.js"
+    "test": "tape lib/loadScripts.test.js | faucet"
   },
   "devDependencies": {
     "faucet": "github:numical/faucet",

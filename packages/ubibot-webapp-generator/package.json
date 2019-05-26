@@ -5,7 +5,8 @@
   "main": "index.js",
   "bin": {
     "start": "bin/start.js",
-    "build": "bin/build.js"
+    "build": "bin/build.js",
+    "test": "echo \"ubibot-webapp-generator: no tests\""
   },
   "author": "mike.evans@numical.com",
   "license": "MIT",

@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "faucet lib/**/*.test.js"
+    "test": "tape lib/**/*.test.js | faucet"
   },
   "dependencies": {
     "@numical/ubibot-natural-language": "0.0.1",
