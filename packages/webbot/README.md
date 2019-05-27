@@ -11,5 +11,5 @@ npm install @numical/webbot
 ## usage
 ```bash
 npm start  << to run a dev version
-npm build << to build a deployment version in directory 'dist'
+npm run build << to build a deployment version in directory 'dist'
 ```

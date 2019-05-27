@@ -16,6 +16,7 @@ const botFile = resolve(cwd(), argv.bot);
 const options = {
   cwd: resolve(__dirname, ".."),
   env: {
+    NODE_ENV: "development",
     UBIBOT_SOURCE: botFile
   }
 };

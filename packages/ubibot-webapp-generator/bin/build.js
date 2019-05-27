@@ -22,6 +22,7 @@ const dest = resolve(cwd(), argv.output);
 const options = {
   cwd: resolve(__dirname, ".."),
   env: {
+    NODE_ENV: "production",
     UBIBOT_SOURCE: src,
     UBIBOT_DESTINATION: dest
   }
