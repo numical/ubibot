@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@numical/ubibot-channel-rest": "0.0.1",
-    "faucet": "github:numical/faucet",
+    "faucet": "^0.0.1",
     "prettier": "^1.17.0",
     "tape": "^4.10.1"
   }

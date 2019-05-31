@@ -3,26 +3,25 @@
 const { resolve } = require("path");
 const { execFile } = require("child_process");
 const cwd = require("cwd");
+const yargs = require("yargs");
 
-const argv = require("yargs").usage("$0 <bot>", "start a web bot in dev mode", yargs => {
+const args = yargs.usage("$0 <bot>", "start a web bot in dev mode", yargs => {
   yargs.positional("bot", {
     describe: "the bot module - it must export an instance of Chat; e.g.: export const bot = new Chat(...);",
     type: "string"
   });
 }).argv;
 
-const botFile = resolve(cwd(), argv.bot);
-
-const options = {
+const childProcessOptions = {
   cwd: resolve(__dirname, ".."),
   env: {
     NODE_ENV: "development",
-    UBIBOT_SOURCE: botFile
+    UBIBOT_SOURCE: resolve(cwd(), args.bot)
   }
 };
-const file = resolve(__dirname, "../node_modules/.bin/", "webpack-dev-server");
+const webpackDevServer = resolve(__dirname, "../node_modules/.bin/", "webpack-dev-server");
 
-const child = execFile(file, options);
+const childProcess = execFile(webpackDevServer, childProcessOptions);
 
-child.stdout.on("data", console.log);
-child.stderr.on("data", console.error || console.log);
+childProcess.stdout.on("data", console.log);
+childProcess.stderr.on("data", console.error || console.log);

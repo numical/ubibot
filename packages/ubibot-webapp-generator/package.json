@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
@@ -19,7 +20,7 @@
     "core-js": "^3.0.1",
     "css-loader": "^2.1.1",
     "cwd": "^0.10.0",
-    "faucet": "github:numical/faucet",
+    "faucet": "^0.0.1",
     "html-webpack-plugin": "^3.2.0",
     "open": "^6.2.0",
     "prettier": "^1.17.0",
@@ -33,6 +34,7 @@
     "webpack": "^4.30.0",
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "yargs": "^13.2.4"
   }
 }

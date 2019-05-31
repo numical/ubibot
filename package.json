@@ -2,12 +2,15 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "clean": "rimraf ./**/package-lock.json && npx lerna clean --yes",
     "postinstall": "npx lerna bootstrap --hoist --nohoist natural",
     "commit": "git-cz",
     "test": "lerna run test --concurrency=1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "commitizen": "3.1.0",
     "cz-emoji": "1.1.2",
     "eslint": "5.16.0",

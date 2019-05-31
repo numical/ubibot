@@ -1,27 +1,36 @@
-const { BrillPOSTagger, Lexicon, RuleSet, WordTokenizer } = require("@numical/ubibot-natural-language");
+const { asyncLoad, BrillPOSTagger, RuleSet, WordTokenizer } = require("@numical/ubibot-natural-language");
+const { POSSIBLE, PROBABLE } = require("../constants/matchingThresholds");
 const History = require("./History");
 const Match = require("./Match");
-const { POSSIBLE, PROBABLE } = require("../constants/matchingThresholds");
 const { orderTaggedWords } = require("./posTags");
 
-const tokenizer = new WordTokenizer();
-const lexicon = new Lexicon("EN", "N");
-const ruleset = new RuleSet("EN");
-const tagger = new BrillPOSTagger(lexicon, ruleset);
+const words = new WordTokenizer();
+const lexiconLoader = asyncLoad("Lexicon");
+let tagger;
 
-const identifyPrincipleConcept = request => {
-  const tokens = tokenizer.tokenize(request);
+const tag = async tokens => {
+  if (!tagger) {
+    const Lexicon = await lexiconLoader;
+    const lexicon = new Lexicon("EN", "N");
+    const ruleset = new RuleSet("EN");
+    tagger = new BrillPOSTagger(lexicon, ruleset);
+  }
+  return tagger.tag(tokens);
+};
+
+const identifyPrincipleConcept = async request => {
+  const tokens = words.tokenize(request);
   if (tokens.length === 1) {
     return tokens[0];
   } else {
-    const { taggedWords } = tagger.tag(tokens);
+    const { taggedWords } = await tag(tokens);
     orderTaggedWords(taggedWords);
     return taggedWords[0].token;
   }
 };
 
 const selectMatch = async (config, contexts, request) => {
-  const command = identifyPrincipleConcept(request);
+  const command = await identifyPrincipleConcept(request);
   let selectedMatch;
   // look for possible command in user's contexts
   while (contexts.length > 0) {

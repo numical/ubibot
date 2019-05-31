@@ -1,3 +1,3 @@
 const { help } = require("../content");
 
-module.exports = async request => help;
+module.exports = async () => help;

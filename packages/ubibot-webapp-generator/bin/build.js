@@ -3,8 +3,9 @@
 const { resolve } = require("path");
 const { execFile } = require("child_process");
 const cwd = require("cwd");
+const yargs = require("yargs");
 
-const argv = require("yargs").command("$0 <bot> <output>", "build a web bot", yargs => {
+const args = yargs.command("$0 <bot> <output>", "build a web bot", yargs => {
   yargs
     .positional("bot", {
       describe: "the bot module - it must export an instance of Chat; e.g.: export const bot = new Chat(...);",
@@ -16,20 +17,17 @@ const argv = require("yargs").command("$0 <bot> <output>", "build a web bot", ya
     });
 }).argv;
 
-const src = resolve(cwd(), argv.bot);
-const dest = resolve(cwd(), argv.output);
-
-const options = {
+const childProcessOptions = {
   cwd: resolve(__dirname, ".."),
   env: {
     NODE_ENV: "production",
-    UBIBOT_SOURCE: src,
-    UBIBOT_DESTINATION: dest
+    UBIBOT_SOURCE: resolve(cwd(), args.bot),
+    UBIBOT_DESTINATION: resolve(cwd(), args.output)
   }
 };
-const file = resolve(__dirname, "../node_modules/.bin/", "webpack");
+const webpack = resolve(__dirname, "../node_modules/.bin/", "webpack");
 
-const child = execFile(file, options);
+const childProcess = execFile(webpack, childProcessOptions);
 
-child.stdout.on("data", console.log);
-child.stderr.on("data", console.error || console.log);
+childProcess.stdout.on("data", console.log);
+childProcess.stderr.on("data", console.error || console.log);

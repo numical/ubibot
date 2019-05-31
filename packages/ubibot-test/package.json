@@ -10,7 +10,7 @@
     "test": "tape lib/loadScripts.test.js | faucet"
   },
   "devDependencies": {
-    "faucet": "github:numical/faucet",
+    "faucet": "^0.0.1",
     "prettier": "^1.17.0",
     "tape": "^4.10.1"
   },
