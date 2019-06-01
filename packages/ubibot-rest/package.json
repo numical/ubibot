@@ -1,0 +1,29 @@
+{
+  "name": "@numical/ubibot-rest",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "startRest": "bin/start.js",
+    "testRest": "bin/test.js"
+  },
+  "scripts": {
+    "test": "echo \"ubibot-rest: no tests\""
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT",
+  "dependencies": {
+    "@numical/ubibot-core": "0.0.1",
+    "@numical/ubibot-test": "0.0.1",
+    "boom": "7.3.0",
+    "cwd": "^0.10.0",
+    "koa": "2.7.0",
+    "koa-body": "4.0.8",
+    "koa-router": "7.4.0",
+    "prettier": "^1.17.0",
+    "supertest": "3.4.2",
+    "tape": "^4.10.1",
+    "uid-safe": "2.1.5",
+    "yargs": "^13.2.4"
+  }
+}

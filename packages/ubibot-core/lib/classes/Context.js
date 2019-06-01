@@ -1,4 +1,4 @@
-const { JaroWinklerDistance } = require("@numical/ubibot-natural-language");
+const { JaroWinklerDistance } = require("@numical/ubibot-natural");
 const { noMatch } = require("./Match");
 
 class Context {

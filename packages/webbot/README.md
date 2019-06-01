@@ -1,6 +1,6 @@
 # webbot
 A web chat interface to access **other** remote Ubibot implementations.  
-An example of using the [ubibot-webapp-generator](../ubibot-webapp-generator/README.md).  
+An example of using the [ubibot-webapp](../ubibot-webapp/README.md).  
 Currently **alpha** code.
 
 ## installation

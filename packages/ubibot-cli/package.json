@@ -1,0 +1,24 @@
+{
+  "name": "@numical/ubibot-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "startCli": "bin/start.js",
+    "testCli": "bin/test.js"
+  },
+  "scripts": {
+    "test": "echo \"ubibot-cli: no tests\""
+  },
+  "author": "mike.evans@numical.com",
+  "license": "MIT",
+  "dependencies": {
+    "@numical/ubibot-core": "0.0.1",
+    "@numical/ubibot-test": "0.0.1",
+    "cwd": "^0.10.0",
+    "memorystream": "0.3.1",
+    "prettier": "^1.17.0",
+    "tape": "^4.10.1",
+    "yargs": "^13.2.4"
+  }
+}

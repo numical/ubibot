@@ -1,4 +1,4 @@
-const { asyncLoad, BrillPOSTagger, RuleSet, WordTokenizer } = require("@numical/ubibot-natural-language");
+const { asyncLoad, BrillPOSTagger, RuleSet, WordTokenizer } = require("@numical/ubibot-natural");
 const { POSSIBLE, PROBABLE } = require("../constants/matchingThresholds");
 const History = require("./History");
 const Match = require("./Match");
@@ -54,7 +54,7 @@ const selectMatch = async (config, contexts, request) => {
   }
   // catch anything else
   if (!selectedMatch) {
-    selectedMatch = Match.definite(async () => config.content.notUnderstood);
+    selectedMatch = Match.definite(async () => config.prefixes.notUnderstood);
   }
   return selectedMatch;
 };

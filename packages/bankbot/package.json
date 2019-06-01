@@ -1,26 +1,23 @@
 {
   "name": "@numical/bankbot",
   "version": "0.0.1",
-  "description": "An example ubibot application demonstrating a bot for servicing a personal bank account.",
-  "main": "bankbot.js",
-  "scripts": {
-    "start": "node bankbot.js",
-    "start:cli": "UBIBOT_CHANNEL=CLI node bankbot.js",
-    "start:rest": "UBIBOT_CHANNEL=REST node bankbot.js",
-    "test": "node bankbot.test.js | faucet",
-    "test:cli": "UBIBOT_CHANNEL=CLI node bankbot.test.js | faucet",
-    "test:rest": "UBIBOT_CHANNEL=REST node bankbot.test.js | faucet"
-  },
+  "description": "An example domain package demonstrating a bot for servicing a personal bank account.",
+  "main": "index.js",
   "author": "mike.evans@numical.com",
   "license": "MIT",
   "dependencies": {
-    "@numical/ubibot-channel-cli": "0.0.1",
-    "@numical/ubibot-domain-bank": "0.0.1"
+    "@numical/ubibot-core": "0.0.1"
   },
   "devDependencies": {
-    "@numical/ubibot-channel-rest": "0.0.1",
-    "faucet": "^0.0.1",
-    "prettier": "^1.17.0",
-    "tape": "^4.10.1"
+    "@numical/ubibot-cli": "0.0.1",
+    "@numical/ubibot-rest": "0.0.1",
+    "prettier": "^1.17.0"
+  },
+  "scripts": {
+    "start:cli" : "startCli index.js",
+    "test:cli": "testCli index.js ./scripts",
+    "start:rest" : "startRest index.js",
+    "test:rest": "testRest index.js ./scripts",
+    "test": "npm run test:cli"
   }
 }

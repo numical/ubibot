@@ -10,11 +10,7 @@ const shallowConfig = {
 
 const deepConfig = {
   content: {
-    io: {
-      console: {
-        botPrefix: "Test value"
-      }
-    }
+    hello: "test Hello"
   }
 };
 
@@ -38,12 +34,8 @@ test("configure", t => {
   t.equal(config.start, testFn, "shallow configuration works");
 
   config = configure(deepConfig, true);
-  t.equal(config.content.io.console.botPrefix, deepConfig.content.io.console.botPrefix, "deep configuration works");
-  t.equal(
-    config.content.io.console.userPrefix,
-    defaultConfig.content.io.console.userPrefix,
-    "deep configuration does not affect other values"
-  );
+  t.equal(config.content.hello, deepConfig.content.hello, "deep configuration works");
+  t.equal(config.content.error, defaultConfig.content.error, "deep configuration does not affect other values");
 
   t.end();
 });

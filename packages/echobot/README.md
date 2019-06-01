@@ -1,5 +1,5 @@
 # echobot
-The simplest possible ubibot application.  
+The simplest possible ubibot domain.  
 Echoes a command line.  
 Currently **alpha** code.
 
@@ -10,6 +10,11 @@ npm install @numical/echobot
 
 ## usage
 ```bash
-npm start  << for CLI
-npm test << for testing
+npx echobot
 ```
+
+## entry points
+* [echobot.js](/lib/echo.js) provides the runtime using the  [@numical/ubibot-channel-cli](../ubibot-channel-cli/README.md) command line channel;
+* [echobot.test.js](/test/echo.test.js) provides automated tests using two channels -  [@numical/ubibot-channel-cli](../ubibot-channel-cli/README.md) and [@numical/ubibot-channel-rest](./packages/ubibot-channel-rest).
+
+

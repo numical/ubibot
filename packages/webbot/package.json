@@ -6,15 +6,15 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "start lib/webbot",
-    "build" : "build lib/webbot dist",
+    "start": "startWeb index",
+    "build" : "buildWeb index dist",
     "test": "echo \"webbot: no tests\""
   },
   "dependencies": {
     "@numical/ubibot-core": "0.0.1"
   },
   "devDependencies": {
-    "@numical/ubibot-webapp-generator": "0.0.1"
+    "@numical/ubibot-webapp": "0.0.1"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT"

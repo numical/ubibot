@@ -10,7 +10,7 @@
     "test": "tape lib/**/*.test.js | faucet"
   },
   "dependencies": {
-    "@numical/ubibot-natural-language": "0.0.1",
+    "@numical/ubibot-natural": "0.0.1",
     "ramda": "^0.26.1",
     "yup": "0.26.10"
   },

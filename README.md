@@ -29,8 +29,8 @@ These are built on top of classes and functions supplied by [@numical/ubibot-cor
 Ultimately they export a ```configuration``` object that is passed to a channel package for running.  
 Examples provided are:
 
-* [@numical/ubibot-domain-echo](packages/ubibot-domain-echo/README.md):  simple echo functionality;
-* [@numical/ubibot-domain-bank](packages/ubibot-domain-bank/README.md):  servicing a fictional personal current account.
+* [@numical/ubibot-domain-echo](packages/echobot/README.md):  simple echo functionality;
+* [@numical/ubibot-domain-bank](packages/bankbot/README.md):  servicing a fictional personal current account.
 
 ### channel packages
 Provide runtimes and IO for Ubibot:
@@ -40,10 +40,12 @@ Provide runtimes and IO for Ubibot:
 ### core packages
 * [@numical/ubibot-core](packages/ubibot-core/README.md): the core 'engine' and utility functions or ubibot;
 * [@numical/ubibot-test](packages/ubibot-test/README.md): Ubibot is friendly but serious - testing is a first-class concern for the framework;
-* [@numical/ubibot-utils](packages/ubibot-utils/README.md): general utilities to support the framework.
 
 ### build packages
-* [@numical/ubibot-webapp-generator](packages/ubibot-webapp-generator/README.md): a dev tool to build a hosting web app for an Ubibot implementation - see [@numical/webbot](packages/webbot/README.md) for any example of usage
+* [@numical/ubibot-webapp](packages/ubibot-webapp/README.md): a dev tool to build a hosting web app for an Ubibot implementation - see [@numical/webbot](packages/webbot/README.md) for any example of usage
 
 
-
+## todos
+1. split core to engine and util
+1. add clean end to conversations
+1. allow config info for start & build scripts
