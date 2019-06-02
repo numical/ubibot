@@ -1,0 +1,6 @@
+bot:Hi, I'm Echobot.
+bot:I'll echo whatever you say.
+user:Boo!
+bot:Boo!
+user:quit
+bot:Bye!

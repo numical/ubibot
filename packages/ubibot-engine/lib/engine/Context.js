@@ -2,10 +2,15 @@ const { JaroWinklerDistance } = require("@numical/ubibot-natural");
 const { noMatch } = require("./Match");
 
 class Context {
-  constructor(name) {
+  constructor(name, stateful = true) {
     this.name = name;
+    this.stateful = stateful;
     this.commands = [];
     this.fns = [];
+  }
+
+  isStateful() {
+    return this.stateful;
   }
 
   addCommand(userCommand, fn) {
@@ -30,5 +35,7 @@ class Context {
     return this.commands.reduce(reducerFn, noMatch(this));
   }
 }
+
+Context.STATELESS = false;
 
 module.exports = Context;

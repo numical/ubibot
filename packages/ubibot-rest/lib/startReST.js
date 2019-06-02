@@ -1,6 +1,6 @@
 const Koa = require("koa");
 const Body = require("koa-body");
-const { checkBot } = require("@numical/ubibot-util");
+const { checkBot, UserExit } = require("@numical/ubibot-util/");
 const endPoints = require("./endPoints");
 const addHeaders = require("./addHeaders");
 const addRouter = require("./addRouter");
@@ -31,10 +31,16 @@ const startReST = (botFactory, options) => {
     const { botId } = params;
     const botState = await store.get(botId);
     if (botState) {
-      const bot = botFactory(botState);
-      const botResponse = await bot.respondTo(userRequest);
-      await store.set(botId, bot.getState());
-      response.body = { botId, botResponse };
+      try {
+        const bot = botFactory(botState);
+        const botResponse = await bot.respondTo(userRequest);
+        await store.set(botId, bot.getState());
+        response.body = { botId, botResponse };
+      } catch (err) {
+        const botResponse = err instanceof UserExit ? err.message : `Unexpected Error: ${err.message}`;
+        await store.remove(botId);
+        response.body = { botId, botResponse };
+      }
     } else {
       response.status = 404;
     }

@@ -16,8 +16,7 @@ class App extends Component {
       const response = await bot.respondTo(request);
       addResponseMessage(response);
     } catch (err) {
-      console.log("App.handleNewUserMessage:", err);
-      addResponseMessage(bot.error());
+      addResponseMessage(err.message);
     }
   }
 

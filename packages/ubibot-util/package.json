@@ -2,7 +2,7 @@
   "name": "@numical/ubibot-util",
   "version": "0.0.1",
   "description": "Ubibot utilities",
-  "main": "lib/index.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },
