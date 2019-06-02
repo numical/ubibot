@@ -1,4 +1,4 @@
-const { Context, Match } = require("@numical/ubibot-core/");
+const { Context, Match } = require("@numical/ubibot-engine/");
 const connect = require("./commands/connect");
 const fetch = require("./commands/fetch");
 

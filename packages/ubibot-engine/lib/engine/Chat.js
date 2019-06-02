@@ -1,6 +1,6 @@
+const clone = require("ramda/src/clone");
 const { asyncLoad, BrillPOSTagger, RuleSet, WordTokenizer } = require("@numical/ubibot-natural");
-const { POSSIBLE, PROBABLE } = require("../constants/matchingThresholds");
-const History = require("./History");
+const { POSSIBLE, PROBABLE } = require("./matchingThresholds");
 const Match = require("./Match");
 const { orderTaggedWords } = require("./posTags");
 
@@ -71,39 +71,32 @@ class Chat {
     if (!config) throw new Error("Missing config for new Chat");
     this.config = config;
     this.contexts = [];
-    this.history = new History(state.history);
+    this.state = state;
     methods.forEach(method => {
       this[method] = this[method].bind(this);
     });
   }
 
   getState() {
-    const { history } = this;
-    return {
-      history: history.entries
-    };
+    return clone(this.state);
   }
 
   hello() {
-    const { config, history } = this;
+    const { config } = this;
     const { hello } = config.content;
-    history.recordResponse(hello);
     return hello;
   }
 
   error() {
-    const { config, history } = this;
+    const { config } = this;
     const { error } = config.content;
-    history.recordResponse(error);
     return error;
   }
 
   async respondTo(request) {
-    const { config, contexts, history } = this;
-    history.recordRequest(request);
+    const { config, contexts } = this;
     const { command, context } = await selectMatch(config, contexts, request);
     const response = await callCommand(context, command, request);
-    history.recordResponse(response);
     return response;
   }
 }

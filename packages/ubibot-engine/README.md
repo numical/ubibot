@@ -1,17 +1,17 @@
-# ubibot-core
+# ubibot-engine
 Core engine of ubibot framework.
 
 Currently **alpha** code 
 
 ## installation
 ```bash
-npm install @numical/ubibot-core
+npm install @numical/ubibot-engine
 ```
 
 ## usage
 Treat as a library of utility functions:
 ```javascript
-const { respondTo } = require("@numical/ubibot-core");
+const { respondTo } = require("@numical/ubibot-engine");
 ...
 const reponse = respondTo(command);
 ```

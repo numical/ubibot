@@ -3,7 +3,7 @@ const MemoryStream = require("memorystream");
 const { test } = require("tape");
 const { loadScripts } = require("@numical/ubibot-test");
 // note: two sets of different but similarly named prefixes here...
-const { prefixes: scriptPrefixes } = require("@numical/ubibot-core");
+const { prefixes: scriptPrefixes } = require("@numical/ubibot-util");
 const cliPrefixes = require("./cliPrefixes");
 const startCLI = require("./startCLI");
 

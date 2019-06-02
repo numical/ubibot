@@ -6,7 +6,7 @@ module.exports = {
       {
         useBuiltIns: "entry",
         corejs: 3,
-        exclude: ["transform-classes"]
+        exclude: ["transform-engine"]
       }
     ]
   ],

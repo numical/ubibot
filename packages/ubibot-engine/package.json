@@ -1,5 +1,5 @@
 {
-  "name": "@numical/ubibot-core",
+  "name": "@numical/ubibot-engine",
   "version": "0.0.1",
   "description": "Core engine of ubibot framework.",
   "main": "lib/index.js",

@@ -11,7 +11,7 @@
     "test": "echo \"webbot: no tests\""
   },
   "dependencies": {
-    "@numical/ubibot-core": "0.0.1"
+    "@numical/ubibot-engine": "0.0.1"
   },
   "devDependencies": {
     "@numical/ubibot-webapp": "0.0.1"

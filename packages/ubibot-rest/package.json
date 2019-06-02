@@ -13,8 +13,8 @@
   "author": "mike.evans@numical.com",
   "license": "MIT",
   "dependencies": {
-    "@numical/ubibot-core": "0.0.1",
     "@numical/ubibot-test": "0.0.1",
+    "@numical/ubibot-util": "0.0.1",
     "boom": "7.3.0",
     "cwd": "^0.10.0",
     "koa": "2.7.0",

@@ -46,6 +46,6 @@ Provide runtimes and IO for Ubibot:
 
 
 ## todos
-1. split core to engine and util
+1. update documentation
 1. add clean end to conversations
 1. allow config info for start & build scripts

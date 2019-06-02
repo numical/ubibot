@@ -6,7 +6,8 @@
   "author": "mike.evans@numical.com",
   "license": "MIT",
   "dependencies": {
-    "@numical/ubibot-core": "0.0.1"
+    "@numical/ubibot-engine": "0.0.1",
+    "@numical/ubibot-util": "0.0.1"
   },
   "devDependencies": {
     "@numical/ubibot-cli": "0.0.1",

@@ -1,5 +1,5 @@
-const Context = require("../classes/Context");
-const Match = require("../classes/Match");
+const Context = require("../engine/Context");
+const Match = require("../engine/Match");
 const { notUnderstood } = require("./defaultContent");
 
 const doNotUnderstand = async () => notUnderstood;
