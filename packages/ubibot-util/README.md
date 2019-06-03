@@ -11,7 +11,7 @@ npm install @numical/ubibot-util
 ## usage
 Treat as a library of utility functions:
 ```javascript
-const { respondTo } = require("@numical/ubibot-util");
+const { respondTo } = require("@numical/ubibot-engine");
 ...
 const reponse = respondTo(command);
 ```

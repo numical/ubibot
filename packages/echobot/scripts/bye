@@ -2,5 +2,5 @@ bot:Hi, I'm Echobot.
 bot:I'll echo whatever you say.
 user:Boo!
 bot:Boo!
-user:bye
+user:[bye|exit|quit|goodbye]
 bot:Bye!

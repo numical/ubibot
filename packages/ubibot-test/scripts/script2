@@ -1,5 +1,5 @@
 # a comment
-line1
-line2
+bot:line1
+bot:line2
 # another comment
-line3
+user:line3

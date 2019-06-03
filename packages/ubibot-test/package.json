@@ -10,6 +10,7 @@
     "test": "tape lib/loadScripts.test.js | faucet"
   },
   "dependencies": {
+    "@numical/ubibot-util": "0.0.1",
     "ramda": "^0.26.1"
   },
   "devDependencies": {
@@ -18,6 +19,5 @@
     "tape": "^4.10.1"
   },
   "author": "mike.evans@numical.com",
-  "license": "MIT",
-  "dependencies": {}
+  "license": "MIT"
 }
