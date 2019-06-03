@@ -9,6 +9,9 @@
   "scripts": {
     "test": "tape lib/loadScripts.test.js | faucet"
   },
+  "dependencies": {
+    "ramda": "^0.26.1"
+  },
   "devDependencies": {
     "faucet": "^0.0.1",
     "prettier": "^1.17.0",

@@ -3,6 +3,7 @@ const fs = require("fs");
 const { resolve } = require("path");
 const { promisify } = require("util");
 const compose = require("ramda/src/compose");
+const createOptionScripts = require("./createOptionScripts");
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
@@ -55,7 +56,7 @@ const readFilesContents = async (dir, files, prefix) => {
 
 const filterForOnlyScripts = async scriptsPromise => {
   const scripts = await scriptsPromise;
-  const onlyScripts = Object.entries(scripts).filter(([key, contents]) => contents[0].trim() === "only");
+  const onlyScripts = Object.entries(scripts).filter(([, contents]) => contents[0].trim() === "only");
   return onlyScripts.length === 0
     ? scripts
     : onlyScripts.reduce((scripts, [key, contents]) => {
@@ -66,14 +67,20 @@ const filterForOnlyScripts = async scriptsPromise => {
 
 const filterForIgnoreScripts = async scriptsPromise => {
   const scripts = await scriptsPromise;
-  const unignoredScripts = Object.entries(scripts).filter(([key, contents]) => contents[0].trim() !== "ignore");
+  const unignoredScripts = Object.entries(scripts).filter(([, contents]) => contents[0].trim() !== "ignore");
   return unignoredScripts.reduce((scripts, [key, contents]) => {
     scripts[key] = contents;
     return scripts;
   }, {});
 };
 
+const generateScriptsForEachOption = async scriptsPromise => {
+  const scripts = await scriptsPromise;
+  return Object.entries(scripts).reduce(createOptionScripts, {});
+};
+
 module.exports = compose(
+  generateScriptsForEachOption,
   filterForIgnoreScripts,
   filterForOnlyScripts,
   readDirectoryContents,
