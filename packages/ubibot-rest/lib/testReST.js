@@ -46,11 +46,11 @@ const runTestScript = async (app, script, test) => {
   test.end();
 };
 
-const testReST = async (name, config, scriptsDir) => {
+const testReST = async (name, config, scriptsDir, options) => {
   test(name, async testSuite => {
     const scripts = await loadScripts(scriptsDir);
     testSuite.plan(scripts.length);
-    const server = startReST(config, { idGenerator });
+    const server = startReST(config, { idGenerator, ...options });
     try {
       const app = await request(server);
       Object.entries(scripts).forEach(([name, script]) => {
