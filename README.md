@@ -5,12 +5,34 @@ A friendly little bot for simple use anywhere.
 [![Known Vulnerabilities](https://snyk.io/test/github/numical/ubibot/badge.svg)](https://snyk.io/test/github/numical/ubibot)
 ## tl;dr
 A modular framework for conversational user interfaces, without any AI.  
-This [monorepo](https://gomonorepo.org/) holds core and example domain packages - see [about](#about).   
-Currently **alpha** code 
+It can run on both servers and edge devices, such as your phone.  
 
-## about
 Ubibot is to designd to hold very simple conversations within a strictly limited context.  
 It is **not** a general purpose, natural language interface.  
+
+This [monorepo](https://gomonorepo.org/) holds development tools, reference implementations and example domain packages.
+
+Currently **alpha** code. 
+
+## installation
+```$bash
+git clone https://github.com/numical/ubibot.git
+cd ubibot
+npm install
+```
+
+## getting started
+The [tutorial](./docs/tutorial.md) is a good start.  
+For reference:
+* [@numical/echobot](packages/echobot/README.md):  over-engineered echo functionality to illustrate usage of the [@numical/ubibot-engine](./packages/ubibot-engine) reference implementation;
+* [@numical/bankbot](packages/bankbot/README.md):  servicing a fictional personal current account.
+  
+
+
+
+
+
+
 
 Any single ubibot application brings together one or more:
 * **domain packages** that supply the context-specific content and logic;
@@ -29,8 +51,6 @@ These are built on top of classes and functions supplied by [@numical/ubibot-cor
 Ultimately they export a ```configuration``` object that is passed to a channel package for running.  
 Examples provided are:
 
-* [@numical/ubibot-domain-echo](packages/echobot/README.md):  simple echo functionality;
-* [@numical/ubibot-domain-bank](packages/bankbot/README.md):  servicing a fictional personal current account.
 
 ### channel packages
 Provide runtimes and IO for Ubibot:

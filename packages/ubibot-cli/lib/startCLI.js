@@ -24,9 +24,11 @@ const startCLI = (botFactory, { stdin, stdout } = process, options) => {
   const ui = readline.createInterface(stdin, stdout);
   ui.setPrompt(userPrefix);
 
-  // say Hi
-  send(bot.hello());
-  ui.prompt();
+  // hello function
+  const sayHi = async () => {
+    send(await bot.hello());
+    ui.prompt();
+  };
 
   // start listening
   ui.on("line", async request => {
@@ -43,6 +45,8 @@ const startCLI = (botFactory, { stdin, stdout } = process, options) => {
       }
     }
   });
+
+  sayHi();
 };
 
 module.exports = startCLI;

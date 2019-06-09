@@ -22,8 +22,9 @@ const startReST = (botFactory, options) => {
     const botId = await idGenerator();
     const bot = botFactory();
     checkBot(bot);
-    await store.set(botId, bot.getState());
-    response.body = { botId, botResponse: bot.hello() };
+    const botResponse = await bot.hello();
+    await storeState(botId, bot);
+    response.body = { botId, botResponse };
   };
 
   const existingBot = async ({ request, response, params }) => {
@@ -34,7 +35,7 @@ const startReST = (botFactory, options) => {
       try {
         const bot = botFactory(botState);
         const botResponse = await bot.respondTo(userRequest);
-        await store.set(botId, bot.getState());
+        await storeState(botId, bot);
         response.body = { botId, botResponse };
       } catch (err) {
         const botResponse = err instanceof UserExit ? err.message : `Unexpected Error: ${err.message}`;
@@ -44,6 +45,11 @@ const startReST = (botFactory, options) => {
     } else {
       response.status = 404;
     }
+  };
+
+  const storeState = async (botId, bot) => {
+    const state = bot.getState ? await bot.getState() : {};
+    await store.set(botId, state);
   };
 
   const createApp = () => {

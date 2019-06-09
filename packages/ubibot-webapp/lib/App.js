@@ -5,9 +5,9 @@ import "react-chat-widget/lib/styles.css";
 import "./App.css";
 
 class App extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const { bot } = this.props;
-    addResponseMessage(bot.hello());
+    addResponseMessage(await bot.hello());
   }
 
   async handleNewUserMessage(request) {
@@ -37,8 +37,7 @@ class App extends Component {
 App.propTypes = {
   bot: PropTypes.shape({
     hello: PropTypes.func.isRequired,
-    respondTo: PropTypes.func.isRequired,
-    error: PropTypes.func.isRequired
+    respondTo: PropTypes.func.isRequired
   }).isRequired
 };
 

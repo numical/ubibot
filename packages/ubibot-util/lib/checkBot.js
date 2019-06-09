@@ -1,4 +1,4 @@
-const methods = ["hello", "respondTo", "getState"];
+const methods = ["hello", "respondTo"]; //  "getState"];
 
 const checkMethod = (bot, name) => {
   if (!bot[name]) {
