@@ -47,13 +47,13 @@ Let's make an echobot that repeats whatever the user says:
 1. create a new node project with ```npm init```;
 2. add an ```index.js``` file which exports a factory function; the factory function should create the echobot implementation:
     ```javascript
-    const hello = async() => 'Hello.  I\'m Echobot';
-
-    const respondTo = async(request) => request;
- 
+    const hello = async () => "Hello.  I'm Echobot";
+    
+    const respondTo = async request => request;
+    
     module.exports = () => ({ hello, respondTo });
     ```
-1. Add [```@numical/ubibot-cli```](../packages/ubibot-cli) as a dev dependency:
+1. Add [```@numical/ubibot-cli```](../ubibot-cli) as a dev dependency:
     ```bash
     npm install -D @numical/ubibot-cli
     ```
@@ -61,19 +61,39 @@ Let's make an echobot that repeats whatever the user says:
     ```json
     ...
     "scripts": {
-       "start": "startCli index.js",
+       "cli": "startCli index.js",
     },
     ...
     ``` 
 1. Run this and you should have your first Ubibot implementation:
     ```bash
-    npm run start
+    npm run cli
     ``` 
 1. It should look something like this:  
-   ![my first ubibot](./my-first-ubibot.png)   
+   ![my first ubibot](my-first-ubibot.png)   
 1. ```CTRL + C``` to exit. 
-
-
+1. Is a CLI too old school for you?  Let's make a webapp instead:
+1. Add [```@numical/ubibot-webapp```](../ubibot-webapp) as a dev dependency:
+    ```bash
+    npm install -D @numical/ubibot-webapp
+    ```
+1. Add another ```package.json``` script:
+    ```json
+    ...
+     "scripts": {
+       "cli": "startCli index.js",
+       "web": "startWeb index.js"
+     },
+    ...
+    ``` 
+1. Run this and you should have your first Ubibot web-app:
+    ```bash
+    npm run web
+    ``` 
+1. It should look something like this:  
+   ![my first webbot](./my-first-webbot.png)  
+   (If you do not see anything check out the bottom right of the screen).
+   
 ## the API (part 2)
 You might have noticed the' _part 1_' suffix on the previous '_API_' section and been suspicious.  
 Rightly so.  
@@ -87,14 +107,14 @@ And you should expect that the conversation might continue, so make sure your in
 However how does a user gracefully exit a conversation?  
 Again, that is up to your implementation - but having worked out the user wishes to quit, how does the bot object let the hosting process know?  
 This is where the one exception to the 'No Error' rule comes in.  
-Your implementation can throw a [```UserExit```](../packages/ubibot-util/lib/UserExit.js) error (well strictly speaking, return a rejected ```Promise```).  
-The hosting process will then handle this by returning to the user the  [```UserExit.message```](../packages/ubibot-util/lib/UserExit.js) and then closing the conversation.  
-There is no obligation to restart the conversation using a recorded state after a [```UserExit```](../packages/ubibot-util/lib/UserExit.js).
+Your implementation can throw a [```UserExit```](../ubibot-util/lib/UserExit.js) error (well strictly speaking, return a rejected ```Promise```).  
+The hosting process will then handle this by returning to the user the  [```UserExit.message```](../ubibot-util/lib/UserExit.js) and then closing the conversation.  
+There is no obligation to restart the conversation using a recorded state after a [```UserExit```](../ubibot-util/lib/UserExit.js).
 
 ## my first ubibot (part 2)
 So let's make our echobot a little more graceful.  
 Let's make it echo the user's input, __unless__ that input is 'exit', in which case we close gracefully.  
-1. Add [```@numical/ubibot-util```](../packages/ubibot-util) as a dependency:
+1. Add [```@numical/ubibot-util```](../ubibot-util) as a dependency:
     ```bash
     npm install @numical/ubibot-util
     ```
@@ -102,9 +122,16 @@ Let's make it echo the user's input, __unless__ that input is 'exit', in which c
     ```javascript
     const { UserExit } = require('@numical/ubibot-util');
 
-    const respondTo = async(request) => request === 'exit' ? throw new UserExit('Bye!') : request;
+    const respondTo = async request => {
+      if (request === "exit") {
+        throw new UserExit("Bye!");
+      } else {
+        return request;
+      }
+    };
     ```
-1. Run the app again and you should be able to exit gracefully.
+1. Run the app again and you should be able to exit gracefully.  
+    (The web app simply resets as this is the least offensive behaviour).
 
 ## the API (part 3)
 The very far sighted amongst you might have been thinking about _state_.  
@@ -125,10 +152,48 @@ The overall effect is to make your exported factory function look like this:
 module.exports = (state) => { hello, respondTo, getState };
 ```
 In a multi-user situation, you create a new bot instance for each request/reply - not for each user conversation - using externally persisted state.     
-For a reference implementation see the [ubibot-rest](../packages/ubibot-rest/lib/startReST.js) module.
+For a reference implementation see the [ubibot-rest](../ubibot-rest/lib/startReST.js) module.
 
 ## my first ubibot (part 3)
-escape single use CLI introduce two new libraries
+So let's first add some state.  
+This is rather contrived, but let's report the number of times echobot replies.  
+As we want to store state, we will now need explicit instances.
+This is why we export a factory function, rather than an instance.  
+Update ```index.js``` to return instances of a ```Bot``` class that implements the Ubibot API:
+```javascript
+const { UserExit } = require("@numical/ubibot-util");
+
+class Bot {
+  constructor() {
+    this.replyCount = 0;
+    this.respondTo = this.respondTo.bind(this);
+  }
+  async hello() {
+    return "Hello.  I'm Echobot";
+  }
+  async respondTo(request) {
+    if (request === "exit") {
+      throw new UserExit("Bye!");
+    } else {
+      this.replyCount++;
+      return `${request} (reply #${this.replyCount})`;
+    }
+  }
+}
+
+module.exports = () => new Bot();
+```
+Note the explicit ```bind``` of ```respondTo``` in the constructor.  
+It's generally a good idea to ensure stateful instance's methods are bound, especially when you have no idea how they will be called in external libraries you do not control. 
+
+OK - we now have state.  
+To now demonstrate this we must escape the single-user CLI environment.  
+We can do this with 
+ 
+ 
+We have not actually used the Ubibot's state management.  Doh!
+In order to demonstrate state functionality we need to do two things:
+1. escape the single user CLI environment;introduce two new libraries
 
 
 

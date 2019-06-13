@@ -5,11 +5,9 @@ class Bot {
     this.replyCount = 0;
     this.respondTo = this.respondTo.bind(this);
   }
-
   async hello() {
     return "Hello.  I'm Echobot";
   }
-
   async respondTo(request) {
     if (request === "exit") {
       throw new UserExit("Bye!");

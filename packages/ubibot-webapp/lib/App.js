@@ -1,28 +1,36 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Widget, addResponseMessage } from "react-chat-widget";
+import { Widget, addResponseMessage, dropMessages } from "react-chat-widget";
 import "react-chat-widget/lib/styles.css";
 import "./App.css";
 
 class App extends Component {
-  async componentDidMount() {
-    const { bot } = this.props;
+  async startChat() {
+    const { botFactory } = this.props;
+    const bot = botFactory();
+    this.setState({ bot });
     addResponseMessage(await bot.hello());
   }
 
-  async handleNewUserMessage(request) {
-    const { bot } = this.props;
+  async userSays(request) {
+    const { bot } = this.state;
     try {
       const response = await bot.respondTo(request);
       addResponseMessage(response);
     } catch (err) {
+      dropMessages();
       addResponseMessage(err.message);
+      this.startChat();
     }
+  }
+
+  async componentDidMount() {
+    this.startChat();
   }
 
   render() {
     const props = {
-      handleNewUserMessage: this.handleNewUserMessage.bind(this),
+      handleNewUserMessage: this.userSays.bind(this),
       title: "Ubibot Web App",
       subtitle: ""
     };
@@ -35,10 +43,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  bot: PropTypes.shape({
-    hello: PropTypes.func.isRequired,
-    respondTo: PropTypes.func.isRequired
-  }).isRequired
+  botFactory: PropTypes.func.isRequired
 };
 
 export default App;

@@ -5,8 +5,7 @@ module.exports = {
       "@babel/preset-env",
       {
         useBuiltIns: "entry",
-        corejs: 3,
-        exclude: ["transform-engine"]
+        corejs: 3
       }
     ]
   ],
