@@ -40,4 +40,4 @@ const options = {
   port: args.port
 };
 
-testReST(name, botFactory, scriptsDir, options);
+testReST({ name, botFactory, scriptsDir, options });

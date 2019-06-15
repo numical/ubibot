@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "cli": "startCli index.js",
-    "web": "startWeb index.js"
+    "web": "startWeb index.js",
+    "rest": "startRest index.js"
   },
   "dependencies": {
     "@numical/ubibot-util": "0.0.1"
   },
   "devDependencies": {
     "@numical/ubibot-cli": "0.0.1",
+    "@numical/ubibot-rest": "0.0.1",
     "@numical/ubibot-webapp": "0.0.1"
   }
 }

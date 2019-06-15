@@ -2,6 +2,7 @@ const Koa = require("koa");
 const Body = require("koa-body");
 const { checkBot, UserExit } = require("@numical/ubibot-util/");
 const endPoints = require("./endPoints");
+const addCors = require("./addCors");
 const addHeaders = require("./addHeaders");
 const addRouter = require("./addRouter");
 
@@ -11,7 +12,7 @@ const defaultOptions = {
   idGenerator: require("./IdGenerator")
 };
 
-const startReST = (botFactory, options) => {
+const startReST = ({ botFactory, options }) => {
   const { port, store, idGenerator } = { ...defaultOptions, ...options };
 
   const healthCheck = async ({ response }) => {
@@ -23,7 +24,7 @@ const startReST = (botFactory, options) => {
     const bot = botFactory();
     checkBot(bot);
     const botResponse = await bot.hello();
-    await storeState(botId, bot);
+    await storeState({ botId, bot });
     response.body = { botId, botResponse };
   };
 
@@ -35,7 +36,7 @@ const startReST = (botFactory, options) => {
       try {
         const bot = botFactory(botState);
         const botResponse = await bot.respondTo(userRequest);
-        await storeState(botId, bot);
+        await storeState({ botId, bot });
         response.body = { botId, botResponse };
       } catch (err) {
         const botResponse = err instanceof UserExit ? err.message : `Unexpected Error: ${err.message}`;
@@ -47,7 +48,7 @@ const startReST = (botFactory, options) => {
     }
   };
 
-  const storeState = async (botId, bot) => {
+  const storeState = async ({ botId, bot }) => {
     const state = bot.getState ? await bot.getState() : {};
     await store.set(botId, state);
   };
@@ -56,6 +57,7 @@ const startReST = (botFactory, options) => {
     const app = new Koa();
     app.use(new Body());
     addHeaders(app);
+    addCors(app);
     const router = addRouter(app);
     router.get(endPoints.healthCheck, healthCheck);
     router.post(endPoints.bots, newBot);
@@ -68,7 +70,7 @@ const startReST = (botFactory, options) => {
 Ubibot http server listening on port ${port} and pid ${process.pid}
 Endpoints available :
 - GET ${endPoints.healthCheck} : returns 200 if all OK
-- POST ${endPoints.bots} : starts a converstation with a new bot
+- POST ${endPoints.bots} : starts a conversation with a new bot
 - POST ${endPoints.bot("xxx")} : continues a conversation with an existing bot`);
   });
 };

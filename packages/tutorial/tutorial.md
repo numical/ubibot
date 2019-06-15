@@ -187,17 +187,50 @@ Note the explicit ```bind``` of ```respondTo``` in the constructor.
 It's generally a good idea to ensure stateful instance's methods are bound, especially when you have no idea how they will be called in external libraries you do not control. 
 
 OK - we now have state.  
-To now demonstrate this we must escape the single-user CLI environment.  
-We can do this with 
- 
- 
-We have not actually used the Ubibot's state management.  Doh!
-In order to demonstrate state functionality we need to do two things:
-1. escape the single user CLI environment;introduce two new libraries
+Feel free to run this up in one of the single user environments:  
+```bash
+npm run cli
+ AND/OR
+npm run web
+``` 
+However the real proof-of-the-pudding is using this is in a multi-user environment.  
+We can do this using two further Ubibot libraries.  
+First, we will run up echobot on a server behind a [ReST](https://www.restapitutorial.com/) interface:
 
+1. Add [```@numical/ubibot-rest```](../ubibot-rest) as a dev dependency:
+    ```bash
+    npm install -D @numical/ubibot-rest
+    ```
+1. Add another ```package.json``` script:
+    ```json
+    ...
+     "scripts": {
+       "cli": "startCli index.js",
+       "web": "startWeb index.js",
+       "rest": "startRest index.js"
+     },
+    ...
+    ``` 
+1. Run this and you should have your first Ubibot server:
+    ```bash
+    npm run rest
+    ``` 
+1. Note so interesting this time - just a server message reporting it is listening.  Note the port!
 
+Second, we need clients to talk to this server.  
+We will use Ubibot's [```@numical/webbot```](../webbot) library.  
+This is a minimal Ubibot implementation based on  [```@numical/ubibot-webapp```](../ubibot-webapp) which simply asks you for the url of _another_ Ubibot implementation to run.  
+Perefct!  
+You will find it running at [https://numical.com/webbot](https://numical.com/webbot).  
+Go there and enter the URL for your echobot server - this will be ```http://localhost:{port}``` taking the port value from the server message earlier.  
+Run up multiple tabs and wonder at the state being maintained on each.
+
+No!  implement getState and constructor!!
+
+## next steps
 
 
 
 feeling somewhat cheated.
 all boilerplate - where is 
+test library

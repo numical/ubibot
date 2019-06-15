@@ -1,14 +1,14 @@
 const options = require("./fetchOptions");
 
-module.exports = async (request, context) => {
+module.exports = async ({ request, context }) => {
   try {
-    const url = request.startsWith("http") ? `${request}/chat` : `http://${request}/chat`;
-    const response = await fetch(url, options);
+    const url = request.startsWith("http") ? request : `http://${request}`;
+    const response = await fetch(`${url}/bots`, options);
     if (response.ok) {
-      const { bot, chatId } = await response.json();
+      const { botId, botResponse } = await response.json();
       context.url = url;
-      context.chatId = chatId;
-      return bot;
+      context.botId = botId;
+      return botResponse;
     } else {
       context.url = undefined;
       const { status, statusText } = response;

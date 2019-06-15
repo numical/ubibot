@@ -11,7 +11,7 @@ const { botPrefix, userPrefix, delimiter } = prefixes;
 let id = 0;
 const idGenerator = () => `${++id}`;
 
-const testBotResponse = (response, botScript, test) => {
+const testBotResponse = ({ response, botScript, test }) => {
   const { botId, botResponse: actual } = response.body;
   const expected = botScript.join(EOL);
   botScript.splice(0);
@@ -20,7 +20,7 @@ const testBotResponse = (response, botScript, test) => {
   return botId;
 };
 
-const runTestScript = async (app, script, test) => {
+const runTestScript = async ({ app, script, test }) => {
   const botScript = [];
   let response = await app.post(endPoints.bots);
   for (const line of script) {
@@ -41,12 +41,12 @@ const runTestScript = async (app, script, test) => {
   }
   // the last script line *should be* from the bot, hence a final asserion to make
   if (botScript.length > 0) {
-    testBotResponse(response, botScript, test);
+    testBotResponse({ response, botScript, test });
   }
   test.end();
 };
 
-const testReST = async (name, config, scriptsDir, options) => {
+const testReST = async ({ name, config, scriptsDir, options }) => {
   test(name, async testSuite => {
     const scripts = await loadScripts(scriptsDir);
     testSuite.plan(scripts.length);
@@ -55,7 +55,7 @@ const testReST = async (name, config, scriptsDir, options) => {
       const app = await request(server);
       Object.entries(scripts).forEach(([name, script]) => {
         testSuite.test(`running test script '${name}'`, scriptTest => {
-          runTestScript(app, script, scriptTest);
+          runTestScript({ app, script, scriptTest });
         });
       });
     } finally {

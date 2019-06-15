@@ -1,4 +1,3 @@
-const { Chat } = require("@numical/ubibot-engine");
-const config = require("./lib/config");
+const Webbot = require("./lib/Webbot");
 
-module.exports = () => new Chat(config);
+module.exports = () => new Webbot();

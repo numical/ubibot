@@ -30,4 +30,4 @@ const options = {
   port: args.port
 };
 
-startReST(botFactory, options);
+startReST({ botFactory, options });

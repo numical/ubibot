@@ -1,8 +1,10 @@
 const { UserExit } = require("@numical/ubibot-util");
 
+const defaultState = { replyCount: 0 };
+
 class Bot {
-  constructor() {
-    this.replyCount = 0;
+  constructor(state = defaultState) {
+    this.replyCount = state.replyCount;
     this.respondTo = this.respondTo.bind(this);
   }
   async hello() {
@@ -16,6 +18,10 @@ class Bot {
       return `${request} (reply #${this.replyCount})`;
     }
   }
+  async getState() {
+    const { replyCount } = this;
+    return { replyCount };
+  }
 }
 
-module.exports = () => new Bot();
+module.exports = state => new Bot(state);
