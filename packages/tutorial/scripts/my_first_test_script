@@ -1,0 +1,5 @@
+bot:Hello. I'm Echobot
+user:Hello
+bot:Hello (reply #1)
+user:exit
+bot:Bye!

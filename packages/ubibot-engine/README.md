@@ -3,6 +3,11 @@ Core engine of ubibot framework.
 
 Currently **alpha** code 
 
+## introduction
+Hello!  
+Thanks if you have come here from the [tutorial](../tutorial/README.md)!  
+If not it might be worth starting there.
+
 ## installation
 ```bash
 npm install @numical/ubibot-engine

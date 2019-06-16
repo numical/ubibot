@@ -22,7 +22,7 @@ npm install
 ```
 
 ## getting started
-The [tutorial](packages/tutorial/tutorial.md) is a good start.  
+The [tutorial](packages/tutorial/README.md) is a good start.  
 For reference:
 * [@numical/echobot](packages/echobot/README.md):  over-engineered echo functionality to illustrate usage of the [@numical/ubibot-engine](./packages/ubibot-engine) reference implementation;
 * [@numical/bankbot](packages/bankbot/README.md):  servicing a fictional personal current account.

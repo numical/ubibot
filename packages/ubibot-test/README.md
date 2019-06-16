@@ -41,7 +41,12 @@ Use this library along with a channel-specific test runner to create 'black-box'
     ```
 * the first prefixed line will be ubibot's initial prompt when started;
 * the last line should be ubitbot's final response;
-
+* for cases where you wish to test multiple user inputs that incur the same ubibot response use the follwoing syntax:
+    ```
+    user:[hello|hllo|hi]
+    ```
+    This will cause the script to be run three times, eaach time using one of these values.  
+    Beware of the combinatorial explosion if you use multiple multi-option lines in a single script.
 
 ## the future
 Basic conversational user interfaces lend themselves to straightforward 'black box' testing, due to their [repl](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) -style semantics.  

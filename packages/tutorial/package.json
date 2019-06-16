@@ -6,6 +6,7 @@
   "scripts": {
     "cli": "startCli index.js",
     "web": "startWeb index.js",
+    "test": "testCli index.js scripts",
     "rest": "startRest index.js"
   },
   "dependencies": {

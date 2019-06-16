@@ -8,7 +8,7 @@ class Bot {
     this.respondTo = this.respondTo.bind(this);
   }
   async hello() {
-    return "Hello.  I'm Echobot";
+    return "Hello. I'm Echobot";
   }
   async respondTo(request) {
     if (request === "exit") {
