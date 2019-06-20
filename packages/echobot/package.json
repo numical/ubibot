@@ -15,7 +15,7 @@
   "scripts": {
     "start": "npm run start:cli",
     "test": "npm run test:cli",
-    "start:cli": "startCli index2.js",
+    "start:cli": "startCli index.js",
     "test:cli": "testCli index.js ./scripts",
     "start:rest": "startRest index.js",
     "test:rest": "testRest index.js ./scripts"

@@ -1,5 +1,5 @@
 {
-  "name": "tutorial",
+  "name": "@numical/ubibot-tutorial",
   "version": "0.0.1",
   "description": "Tutorial for Ubibot",
   "main": "index.js",

@@ -1,3 +1,9 @@
+/*
+ In the asbsence of Type!
+ It would be nice to check the returned values are Promises but such
+ dynamic tests would affect stateful instances.  So no.
+*/
+
 const methods = ["hello", "respondTo"]; //  "getState"];
 
 const checkMethod = (bot, name) => {

@@ -1,12 +1,14 @@
 # ubibot-engine
-Core engine of ubibot framework.
+Reference implementation of the 
 
 Currently **alpha** code 
 
 ## introduction
 Hello!  
 Thanks if you have come here from the [tutorial](../tutorial/README.md)!  
-If not it might be worth starting there.
+If not, it might be worth starting there.
+
+The tutorial gives you an overview of how to develop within the ubibot framework, using the supplied libraries
 
 ## installation
 ```bash

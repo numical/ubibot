@@ -278,15 +278,16 @@ Enter the URL for your echobot server - this will be ```http://localhost:{port}`
 Run up multiple tabs and wonder at the state being maintained on each.
 
 ## next steps
-If you have got this far you might be feeling a little cheated.  
+If you have got this far you might be feeling a little cheated.
+
 We have covered various boilerplate libraries that give us testable, conversational interfaces.
-But what about the actual conversations themselves?  
-So far we have been limited to echoing the user - something that can be done in a lot less code.   
-This is deliberate.  The Ubibot ecosystem is there to help anyone who wants to go off and develop their own implementation of the ```respondTo``` API.
+But what about the actual conversations themselves?  So far we have been limited to echoing the user - something that can be done in a lot less code.   
+
+This is deliberate.  The Ubibot ecosystem is there to help anyone who wants to go off and develop their own implementation of the ```respondTo``` API.  
 Please do!
 
-Or you can take a look at Ubibot's suggested implementation - a non AI system of contextualised heuristics.  
-Sounds cool?  It's meant to...  
+**Or...** you can take a look at Ubibot's suggested implementation - a non-AI system of contextualised heuristics backed by natural language understanding.  
+Sounds cool?  It is meant to...  
 If so, go sink your teeth into the real fun at [```@numical/ubibot-engine```](../ubibot-engine/README.md).
 
 Thanks for reading so far.  

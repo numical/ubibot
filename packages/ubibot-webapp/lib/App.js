@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Widget, addResponseMessage, dropMessages } from "react-chat-widget";
+import { checkBot } from "@numical/ubibot-util";
 import "react-chat-widget/lib/styles.css";
 import "./App.css";
 
 class App extends Component {
   async startChat() {
-    const { botFactory } = this.props;
-    const bot = botFactory();
-    this.setState({ bot });
-    addResponseMessage(await bot.hello());
+    try {
+      const { botFactory } = this.props;
+      const bot = botFactory();
+      checkBot(bot);
+      this.setState({ bot });
+      addResponseMessage(await bot.hello());
+    } catch (err) {
+      addResponseMessage(err.message);
+    }
   }
 
   async userSays(request) {
