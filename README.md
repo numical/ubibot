@@ -37,7 +37,7 @@ interface Bot {
 The [@numical/ubibot-tutorial](packages/tutorial/README.md) is a good start.  
 It introduces the core interface and the libaries available to develop, publish and test implementations of that interface.
 
-The framework's reference implementation of that interface is contained in [```@numical/ubibot-engine```](./packages/ubibot-engine/README.md).  
+The framework's reference implementation of that interface is contained in [@numical/ubibot-engine](./packages/ubibot-engine/README.md).  
 
 You can use this as the base for your own bot.  For those who like the 'monkey see, monkey do' approach, use these projects as references:
 * [@numical/echobot](packages/echobot/README.md):  over-engineered echo functionality;
@@ -45,23 +45,22 @@ You can use this as the base for your own bot.  For those who like the 'monkey s
   
 ##ubibot ecosystem
 This monorepo comprises:
-* [@numical/bankbot](packages/bankbot/README.md): example Ubibot implementation
-* [@numical/echobot](packages/echobot/README.md): example Ubibot implementation
-* @numical/ubibot-tutorial  
+* [@numical/bankbot](packages/bankbot/README.md): example Ubibot implementation;
+* [@numical/echobot](packages/echobot/README.md): example Ubibot implementation;
+* [@numical/ubibot-tutorial](packages/tutorial/README.md): tutorial introducing Ubibot;
+* [@numica/ubibot-cli](packages/ubibot-cli/README.md): a command line runtime for ubibot;
+* [@numical/ubibot-engine](./packages/ubibot-engine/README.md): reference implementation;
+* [@numical/ubibot-natural](./packages/ubibot-natural/README.md): repackaging of the [natural language library](https://www.npmjs.com/package/natural);
+* [@numical/ubibot-rest](packages/ubibot-rest/README.md): a server-side runtime for multi-user Ubibot exposing an [HTTP ReST](https://www.restapitutorial.com/lessons/httpmethods.html) interface;
+* [@numical/ubibot-test](packages/ubibot-test/README.md): system testing;
+* [@numical/ubibot-util](packages/ubibot-util/README.md): common artifacts used throughout the framework;
+* [@numical/ubibot-webapp](packages/ubibot-webapp/README.md): a dev tool to build a hosting web app for an Ubibot implementation;
+* [@numical/webbot](packages/webbot/README.md): generic webbot for connecting to any remote Ubibot implementation.
 
-  
-  
-The other packages that comprise this monorepo are:
-#### channel packages
-Provide runtimes and IO for Ubibot:
-* [@numica/ubibot-channel-cli](packages/ubibot-channel-cli/README.md): a command line interface for ubibot;
-* [@numical/ubibot-channel-rest](packages/ubibot-channel-rest/README.md): a channel package for accessing a multi-user implementation of ubibot via a [HTTP ReST](https://www.restapitutorial.com/lessons/httpmethods.html) calls; 
+##thanks
+Thanks for your interest!
 
-### core packages
-* [@numical/ubibot-core](packages/ubibot-core/README.md): the core 'engine' and utility functions or ubibot;
-* [@numical/ubibot-test](packages/ubibot-test/README.md): Ubibot is friendly but serious - testing is a first-class concern for the framework;
-
-### build packages
-* [@numical/ubibot-webapp](packages/ubibot-webapp/README.md): a dev tool to build a hosting web app for an Ubibot implementation - see [@numical/webbot](packages/webbot/README.md) for any example of usage
+numical
+June 2019
 
 

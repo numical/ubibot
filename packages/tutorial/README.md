@@ -135,13 +135,9 @@ Let's make it echo the user's input, __unless__ that input is 'exit', in which c
 
 
 ##testing
-In the [intro](../../README.md) we called testing is '_first class concern_'.  
-Yet we have waited until part 3 to discuss it!  
-Sorry.
-
-The framework philosophy is:
-* to leave unit testing to the implementation - after all it is you, the implementor, who best knows the level of testing, you want;
-* but to offer powerful integration testing utilities.
+The framework's testing philosophy is:
+* leave unit testing to the implementation - after all it is you, the implementor, who best knows the level of testing, you want;
+* but offer powerful integration testing utilities.
 
 One of the great advantages of conversational interfaces is that the user interaction is ```String``` in / ```String``` out.  
 This makes writing test scripts easy, and the [```@numical/ubibot-test```](../ubibot-test) makes running them equally easy.
