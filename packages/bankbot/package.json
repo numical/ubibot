@@ -1,7 +1,7 @@
 {
   "name": "@numical/bankbot",
   "version": "0.0.1",
-  "description": "An example domain package demonstrating a bot for servicing a personal bank account.",
+  "description": "An example Ubibot implementation for servicing a personal bank account",
   "main": "index.js",
   "author": "mike.evans@numical.com",
   "license": "MIT",
@@ -12,13 +12,15 @@
   "devDependencies": {
     "@numical/ubibot-cli": "0.0.1",
     "@numical/ubibot-rest": "0.0.1",
+    "@numical/ubibot-webapp": "0.0.1",
     "prettier": "^1.17.0"
   },
   "scripts": {
-    "start:cli" : "startCli index.js",
-    "test:cli": "testCli index.js ./scripts",
-    "start:rest" : "startRest index.js",
-    "test:rest": "testRest index.js ./scripts",
-    "test": "npm run test:cli"
+    "cli" : "startCli index.js",
+    "cli:test": "testCli index.js ./scripts",
+    "rest" : "startRest index.js",
+    "rest:test": "testRest index.js ./scripts",
+    "test": "npm run cli:test",
+    "webapp": "startWeb index.js"
   }
 }

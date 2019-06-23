@@ -1,20 +1,28 @@
 # echobot
-The simplest possible ubibot domain.  
-Echoes a command line.  
+The simplest possible implementaion of Ubibot's natural-language-based [@numical/ubibot-engine](../ubibot-engine/README.md).  
+i.e. a completely over-engineered solution to echoing the users' input.  
 Currently **alpha** code.
 
-## installation
+##installation
 ```bash
-npm install @numical/echobot
+git clone https://github.com/numical/ubibot.git
+cd ubibot/packages/echobot
 ```
 
-## usage
+##usage
+__command line__
 ```bash
-npx echobot
+npm run cli
+```
+__web app__
+```bash
+npm run webapp
 ```
 
-## entry points
-* [echobot.js](/lib/echo.js) provides the runtime using the  [@numical/ubibot-channel-cli](../ubibot-channel-cli/README.md) command line channel;
-* [echobot.test.js](/test/echo.test.js) provides automated tests using two channels -  [@numical/ubibot-channel-cli](../ubibot-channel-cli/README.md) and [@numical/ubibot-channel-rest](./packages/ubibot-channel-rest).
+##entry point
+* [```index.js```](./index.js) exports a [```Chat```](../ubibot-engine/lib/engine/Chat.js) instance...
+* based on a [```config```](./lib/config.js) that combines....
+* [```content```](./lib/content.js) and [```contexts```](./lib/contexts.js) that...
+* aggregate and contextualize as set of [```commands``](./lib/commands).
 
-
+See the [engine tutorial](../ubibot-engine/README.md)  for more.

@@ -1,7 +1,7 @@
 {
   "name": "@numical/echobot",
   "version": "0.0.1",
-  "description": "The simplest possible ubibot domain.",
+  "description": "The simplest possible Ubibot implementation.",
   "main": "index.js",
   "dependencies": {
     "@numical/ubibot-engine": "0.0.1",
@@ -10,15 +10,16 @@
   "devDependencies": {
     "@numical/ubibot-cli": "0.0.1",
     "@numical/ubibot-rest": "0.0.1",
+    "@numical/ubibot-webapp": "0.0.1",
     "prettier": "^1.17.0"
   },
   "scripts": {
-    "start": "npm run start:cli",
-    "test": "npm run test:cli",
-    "start:cli": "startCli index.js",
-    "test:cli": "testCli index.js ./scripts",
-    "start:rest": "startRest index.js",
-    "test:rest": "testRest index.js ./scripts"
+    "cli": "npm run start:cli",
+    "cli:test": "testCli index.js ./scripts",
+    "rest": "startRest index.js",
+    "rest:test": "testRest index.js ./scripts",
+    "test": "npm run cli:test",
+    "webapp": "startWeb index.js"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT"

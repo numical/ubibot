@@ -2,11 +2,12 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "commit": "git-cz",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "clean": "rimraf ./**/package-lock.json && npx lerna clean --yes",
-    "postinstall": "npx lerna bootstrap --hoist --nohoist natural",
-    "commit": "git-cz",
+    "hoist": "npx lerna bootstrap --hoist --nohoist natural",
+    "postinstall": "npm run hoist",
     "test": "lerna run test --concurrency=1"
   },
   "devDependencies": {
