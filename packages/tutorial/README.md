@@ -19,7 +19,7 @@ This tutorial assumes:
 ##core functions
 Ubibot is based around a single api:
 ```javascript
-function respondTo(string: request) => Promise<string>: response
+function respondTo(string: request) => Promise<string>
 ```
 That's it really.  
 Some points to note:  
@@ -31,7 +31,7 @@ No delayed notifications, no fancy formats.  Ubibot has a deliberately simple AP
 Well OK, there a couple of wrinkles:
 1. Actually, in addition to ```respondTo```, the created bot object must have a ```hello``` method.  Its contract is also pretty simple:
     ```javascript
-    function hello => Promise<string>: greeting
+    function hello() => Promise<string>
     ```
 1. Your module must not export the functions direct, but instead a factory function that creates a bot object with a ```respondTo``` method:
     ```javascript 
@@ -186,7 +186,7 @@ When your bot is so successful that more than one user wants to talk to it at on
 Then you want to store state so that multiple conversations can be tracked.  
 Hence there is a third, optional function to the ubibot API:
 ```javascript
-function getState => Promise<object>: state
+function getState() => Promise<object>
 ```
 The hosting process can call this is at any time and expect a non-null (but possibly empty) object.  
 By convention this should be readily serializable (```JSON.stringify```-able) , but that's really up to you and your persistence choices.  

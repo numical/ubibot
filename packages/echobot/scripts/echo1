@@ -2,5 +2,4 @@ bot:Hi, I'm Echobot.
 bot:I'll echo whatever you say.
 user:Hello World
 bot:Hello World
-user:And again
-bot:And again
+

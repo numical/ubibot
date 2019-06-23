@@ -1,41 +1,33 @@
 const { JaroWinklerDistance } = require("@numical/ubibot-natural");
 const { noMatch } = require("./Match");
 
+const createCommands = (all, { text, fn, score = Number.NEGATIVE_INFINITY }) => {
+  if (Array.isArray(text)) {
+    text.forEach(t => createCommands(all, { text: t, fn, score }));
+  } else {
+    all.push({ text, fn, score });
+  }
+  return all;
+};
+
 class Context {
-  constructor(name, stateful = true) {
+  constructor({ name, commands = [], stateful = true }) {
     this.name = name;
     this.stateful = stateful;
-    this.commands = [];
-    this.fns = [];
+    this.commands = commands.reduce(createCommands, []);
   }
 
-  isStateful() {
-    return this.stateful;
-  }
-
-  addCommand(userCommand, fn) {
-    const { commands, fns } = this;
-    if (Array.isArray(userCommand)) {
-      userCommand.forEach(command => this.addCommand(command, fn));
-    } else {
-      commands.push(userCommand);
-      fns.push(fn);
-    }
-  }
-
-  match(userCommand) {
-    const reducerFn = (bestMatch, command, index) => {
-      const score = JaroWinklerDistance(command, userCommand);
+  match(text) {
+    const reducer = (bestMatch, command) => {
+      const score = command.score < 0 ? JaroWinklerDistance(command.text, text) : command.score;
       if (score > bestMatch.score) {
         bestMatch.score = score;
-        bestMatch.command = this.fns[index];
+        bestMatch.command = command.fn;
       }
       return bestMatch;
     };
-    return this.commands.reduce(reducerFn, noMatch(this));
+    return this.commands.reduce(reducer, noMatch(this));
   }
 }
-
-Context.STATELESS = false;
 
 module.exports = Context;

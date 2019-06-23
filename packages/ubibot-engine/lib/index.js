@@ -1,7 +1,7 @@
 // the public api
 const Chat = require("./engine/Chat");
 const Context = require("./engine/Context");
-const Match = require("./engine/Match");
 const configure = require("./config/configure");
+const scores = require("./engine/scores");
 
-module.exports = { Chat, Context, Match, configure };
+module.exports = { Chat, Context, configure, scores };

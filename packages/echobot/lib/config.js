@@ -1,9 +1,8 @@
 const { configure } = require("@numical/ubibot-engine/");
 const content = require("./content");
-const echoContext = require("./echoContext");
-const exitContext = require("./exitContext");
+const contexts = require("./contexts");
 
 module.exports = configure({
   content,
-  contexts: [exitContext, echoContext]
+  contexts
 });

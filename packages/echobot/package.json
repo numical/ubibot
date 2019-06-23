@@ -14,7 +14,7 @@
     "prettier": "^1.17.0"
   },
   "scripts": {
-    "cli": "npm run start:cli",
+    "cli": "startCli index.js",
     "cli:test": "testCli index.js ./scripts",
     "rest": "startRest index.js",
     "rest:test": "testRest index.js ./scripts",

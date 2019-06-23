@@ -1,4 +1,4 @@
-const { DEFINITE, NOT } = require("./matchingThresholds.js");
+const { DEFINITE, NOT } = require("./scores.js");
 
 const nullCommand = () => {
   throw new Error("Error - null command executed.");

@@ -1,5 +1,5 @@
 const { asyncLoad, BrillPOSTagger, RuleSet, WordTokenizer } = require("@numical/ubibot-natural");
-const { POSSIBLE, PROBABLE } = require("./matchingThresholds");
+const { POSSIBLE, PROBABLE } = require("./scores");
 const Match = require("./Match");
 const { orderTaggedWords } = require("./posTags");
 
@@ -47,7 +47,7 @@ const selectMatch = async (config, contexts, request) => {
       .map(context => context.match(command))
       .reduce((bestMatch, match) => (match.score > bestMatch.score ? match : bestMatch));
     if (bestMatch.score >= PROBABLE) {
-      if (bestMatch.context.isStateful()) {
+      if (bestMatch.context.stateful) {
         contexts.push(bestMatch.context);
       }
       selectedMatch = bestMatch;
