@@ -8,7 +8,7 @@ module.exports = async ({ request, context }) => {
       const { botId, botResponse } = await response.json();
       context.url = url;
       context.botId = botId;
-      return botResponse;
+      return botResponse.value;
     } else {
       context.url = undefined;
       const { status, statusText } = response;

@@ -8,14 +8,15 @@ class Bot {
     this.respondTo = this.respondTo.bind(this);
   }
   async hello() {
-    return "Hello. I'm Echobot";
+    return { value: "Hello. I'm Echobot" };
   }
   async respondTo(request) {
-    if (request === "exit") {
+    const { value } = request;
+    if (value === "exit") {
       throw new UserExit("Bye!");
     } else {
       this.replyCount++;
-      return `${request} (reply #${this.replyCount})`;
+      return { value: `${value} (reply #${this.replyCount})` };
     }
   }
   async getState() {

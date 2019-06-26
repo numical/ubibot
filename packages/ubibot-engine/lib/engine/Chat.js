@@ -1,9 +1,9 @@
 const clone = require("ramda/src/clone");
 const selectMatch = require("./selectMatch");
 
-async function call(context, command, request) {
-  const response = await command(request, context);
-  return typeof response === "function" ? call(context, response, request) : response;
+async function call(context, command, text) {
+  const response = await command(text, context);
+  return typeof response === "function" ? call(context, response, text) : response;
 }
 
 const methods = ["getState", "hello", "respondTo"];
@@ -26,14 +26,15 @@ class Chat {
   async hello() {
     const { config } = this;
     const { hello } = config.content;
-    return hello;
+    return { value: hello };
   }
 
   async respondTo(request) {
     const { config, contexts } = this;
-    const { command, context } = await selectMatch(config, contexts, request);
-    const response = await call(context, command, request);
-    return response;
+    const { value } = request;
+    const { command, context } = await selectMatch(config, contexts, value);
+    const response = await call(context, command, value);
+    return { value: response };
   }
 }
 

@@ -9,7 +9,7 @@ module.exports = async ({ request, context }) => {
     if (response.ok) {
       const { botId, botResponse } = await response.json();
       context.botId = botId;
-      return botResponse;
+      return botResponse.value;
     } else {
       context.url = undefined;
       const { status, statusText } = response;

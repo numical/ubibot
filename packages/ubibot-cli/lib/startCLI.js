@@ -14,8 +14,9 @@ const startCLI = (botFactory, { stdin, stdout } = process, options) => {
   const opts = { ...defaultOptions, ...options };
 
   // output function
-  const send = response => {
-    response.split(EOL).forEach(line => {
+  const write = response => {
+    const { value } = response;
+    value.split(EOL).forEach(line => {
       stdout.write(`${botPrefix}${line}${EOL}`);
     });
   };
@@ -26,19 +27,19 @@ const startCLI = (botFactory, { stdin, stdout } = process, options) => {
 
   // hello function
   const sayHi = async () => {
-    send(await bot.hello());
+    write(await bot.hello());
     ui.prompt();
   };
 
   // start listening
-  ui.on("line", async request => {
+  ui.on("line", async value => {
     try {
-      const response = await bot.respondTo(request);
-      send(response);
+      const response = await bot.respondTo({ value });
+      write(response);
       ui.prompt();
     } catch (err) {
-      const response = err instanceof UserExit ? err.message : `Unexpected Error: ${err.message}`;
-      send(response);
+      const value = err instanceof UserExit ? err.message : `Unexpected Error: ${err.message}`;
+      write({ value });
       if (opts.enableExit) {
         const code = err instanceof UserExit ? 0 : 1;
         process.exit(code);

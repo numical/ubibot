@@ -12,26 +12,26 @@ This tutorial assumes:
     * [my first ubibot (part 2)](#my-first-ubibot-part-2);
 * [testing](#testing])
     * [my first ubibot (part 3)](#my-first-ubibot-part-3)
-* [multiple users and state](#mltiple-users-and-state)
+* [multiple users and state](#mltiple-users-and-state) 
     * [my first ubibot (part 4)](#my-first-ubibot-part-4)
 * [next steps](#next-steps)
 
 ##core functions
 Ubibot is based around a single api:
 ```javascript
-function respondTo(string: request) => Promise<string>
+function respondTo({ value: string }) => Promise<{ value: string }>
 ```
 That's it really.  
 Some points to note:  
 - its implementation is asynchronous (it returns a Promise);
-- but its usage is essentially synchronous - swapping strings in a request/response manner.
+- but its usage is essentially synchronous - swapping strings in a request/response manner;
+-  to enable easy future extension, it uses the [RORO pattern](https://www.freecodecamp.org/news/elegant-patterns-in-modern-javascript-roro-be01e7669cbd/) - essentially wrapping the ```string``` value in an object.
 
 No delayed notifications, no fancy formats.  Ubibot has a deliberately simple API.
-
 Well OK, there a couple of wrinkles:
 1. Actually, in addition to ```respondTo```, the created bot object must have a ```hello``` method.  Its contract is also pretty simple:
     ```javascript
-    function hello() => Promise<string>
+    function hello() => Promise<{ value: string }>
     ```
 1. Your module must not export the functions direct, but instead a factory function that creates a bot object with a ```respondTo``` method:
     ```javascript 
@@ -123,8 +123,9 @@ Let's make it echo the user's input, __unless__ that input is 'exit', in which c
     const { UserExit } = require('@numical/ubibot-util');
 
     const respondTo = async request => {
-      if (request === "exit") {
-        throw new UserExit("Bye!");
+      const { value } = request; 
+      if (value === "exit") {
+        throw new UserExit("Bye!")
       } else {
         return request;
       }
@@ -216,11 +217,12 @@ class Bot {
     return "Hello.  I'm Echobot";
   }
   async respondTo(request) {
-    if (request === "exit") {
+    const { value } = request;
+    if (value === "exit") {
       throw new UserExit("Bye!");
     } else {
       this.replyCount++;
-      return `${request} (reply #${this.replyCount})`;
+      return { value: `${value} (reply #${this.replyCount})` };
     }
   }
 }

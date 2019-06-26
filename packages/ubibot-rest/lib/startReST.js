@@ -23,7 +23,7 @@ const startReST = ({ botFactory, options }) => {
     const botId = await idGenerator();
     const bot = botFactory();
     checkBot(bot);
-    const botResponse = await bot.hello();
+    const { value: botResponse } = await bot.hello();
     await storeState({ botId, bot });
     response.body = { botId, botResponse };
   };
@@ -35,7 +35,7 @@ const startReST = ({ botFactory, options }) => {
     if (botState) {
       try {
         const bot = botFactory(botState);
-        const botResponse = await bot.respondTo(userRequest);
+        const { value: botResponse } = await bot.respondTo(userRequest);
         await storeState({ botId, bot });
         response.body = { botId, botResponse };
       } catch (err) {
