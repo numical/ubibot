@@ -2,7 +2,7 @@
   "name": "@numical/ubibot-engine",
   "version": "0.0.1",
   "description": "Core engine of ubibot framework.",
-  "main": "lib/index.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@numical/ubibot-natural": "0.0.1",
+    "@numical/ubibot-util": "0.0.1",
     "ramda": "^0.26.1",
     "yup": "0.26.10"
   },

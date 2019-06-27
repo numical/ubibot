@@ -3,7 +3,7 @@ const MemoryStream = require("memorystream");
 const { test } = require("tape");
 const { loadScripts } = require("@numical/ubibot-test");
 // note: two sets of different but similarly named prefixes here...
-const { prefixes: scriptPrefixes } = require("@numical/ubibot-util/");
+const { constants } = require("@numical/ubibot-test/");
 const cliPrefixes = require("./cliPrefixes");
 const startCLI = require("./startCLI");
 
@@ -35,6 +35,13 @@ const runTestScript = (botFactory, script, test) => {
     }
   };
 
+  const nullAssertion = () => test.pass("line can be anything");
+
+  const addNullAssertion = () => {
+    assertions.push(nullAssertion);
+    runOutputTests();
+  };
+
   const addAssertion = value => {
     const { botPrefix } = cliPrefixes;
     const expected = `${botPrefix}${value}${EOL}`;
@@ -44,11 +51,16 @@ const runTestScript = (botFactory, script, test) => {
   };
 
   const parseScriptLine = line => {
-    const { botPrefix, userPrefix, delimiter } = scriptPrefixes;
-    const [source, value] = line.split(delimiter);
+    const { any, botPrefix, userPrefix, delimiter } = constants;
+    const split = line.indexOf(delimiter);
+    if (split < 0) {
+      throw new Error(`Invalid script line: '${line}'`);
+    }
+    const source = line.substring(0, split);
+    const value = line.substring(split + delimiter.length);
     switch (source) {
       case botPrefix:
-        addAssertion(value);
+        value === any ? addNullAssertion() : addAssertion(value);
         break;
       case userPrefix:
         stdin.write(`${value}${EOL}`);

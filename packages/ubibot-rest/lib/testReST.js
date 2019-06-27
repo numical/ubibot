@@ -1,12 +1,11 @@
 const { EOL } = require("os");
 const request = require("supertest");
 const { test } = require("tape");
-const { loadScripts } = require("@numical/ubibot-test");
-const { prefixes } = require("@numical/ubibot-util/");
+const { constants, loadScripts } = require("@numical/ubibot-test");
 const startReST = require("./startReST");
 const endPoints = require("./endPoints");
 
-const { botPrefix, userPrefix, delimiter } = prefixes;
+const { botPrefix, userPrefix, delimiter } = constants;
 
 let id = 0;
 const idGenerator = () => `${++id}`;

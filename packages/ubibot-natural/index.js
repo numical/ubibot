@@ -2,6 +2,7 @@ const BrillPOSTagger = require("natural/lib/natural/brill_pos_tagger/lib/Brill_P
 const RuleSet = require("natural/lib/natural/brill_pos_tagger/lib/RuleSet");
 const JaroWinklerDistance = require("natural/lib/natural/distance/jaro-winkler_distance");
 const { WordTokenizer } = require("natural/lib/natural/tokenizers/regexp_tokenizer");
+const Lexicon = require("natural/lib/natural/brill_pos_tagger/lib/Lexicon");
 
 // try async import() and if not supported fallback to require()
 const fallbackLoad = path =>
@@ -11,7 +12,8 @@ const fallbackLoad = path =>
       .catch(() => {
         try {
           // eslint-disable-next-line import/no-dynamic-require
-          resolve(require(path));
+          const loaded = require(path);
+          resolve(loaded);
         } catch (err) {
           reject(err);
         }

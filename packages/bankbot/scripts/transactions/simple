@@ -1,0 +1,10 @@
+bot:Hello. I'm BankBot.  How can I help?
+user:transactions
+bot:Your most recent transactions are:
+bot:[*]
+bot:[*]
+bot:[*]
+bot:[*]
+bot:[*]
+bot:[*]
+

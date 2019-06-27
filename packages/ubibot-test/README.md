@@ -37,11 +37,15 @@ Use this library along with a channel-specific test runner to create 'black-box'
 * there should be __no space__ between the prefix and the expected value:
     ```
     ubibot:Hello << correct
-    ubibit: Hello << incorrect
+    ubibot: Hello << incorrect
     ```
 * the first prefixed line will be ubibot's initial prompt when started;
 * the last line should be ubitbot's final response;
-* for cases where you wish to test multiple user inputs that incur the same ubibot response use the follwoing syntax:
+* where you want to accept any output from Ubibot, use the special syntax:
+    ```javascript
+    ubibot:[*]
+    ```
+* for cases where you wish to test multiple user inputs that incur the same ubibot response use the following syntax:
     ```
     user:[hello|hllo|hi]
     ```

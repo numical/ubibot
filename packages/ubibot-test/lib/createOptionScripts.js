@@ -1,6 +1,5 @@
-const { prefixes } = require("@numical/ubibot-util");
+const { delimiter, userPrefix } = require("./constants");
 
-const { delimiter, userPrefix } = prefixes;
 const optionsLinePrefix = `${userPrefix}${delimiter}[`;
 const optionsLineSuffix = "]";
 const optionsLineDelimiter = "|";
