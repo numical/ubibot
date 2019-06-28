@@ -1,4 +1,4 @@
-const { EOL } = require("@numical/ubibot-engine");
+const { EOL } = require("@numical/ubibot-util");
 const { transactions } = require("../content");
 const getAccount = require("../mocks/getAccount");
 

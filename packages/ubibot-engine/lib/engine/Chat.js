@@ -32,9 +32,13 @@ class Chat {
   async respondTo(request) {
     const { config, contexts } = this;
     const { value } = request;
-    const { command, context } = await selectMatch(config, contexts, value);
-    const response = await call(context, command, value);
-    return { value: response };
+    if (value) {
+      const { command, context } = await selectMatch(config, contexts, value);
+      const response = await call(context, command, value);
+      return { value: response };
+    } else {
+      return { value: config.content.emptyRequest };
+    }
   }
 }
 

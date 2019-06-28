@@ -1,9 +1,8 @@
-const { EOL } = require("os");
 const MemoryStream = require("memorystream");
 const { test } = require("tape");
-const { loadScripts } = require("@numical/ubibot-test");
+const { EOL } = require("@numical/ubibot-util/");
+const { constants, loadScripts } = require("@numical/ubibot-test");
 // note: two sets of different but similarly named prefixes here...
-const { constants } = require("@numical/ubibot-test/");
 const cliPrefixes = require("./cliPrefixes");
 const startCLI = require("./startCLI");
 

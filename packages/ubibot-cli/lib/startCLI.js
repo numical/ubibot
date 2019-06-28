@@ -1,6 +1,5 @@
-const { EOL } = require("os");
 const readline = require("readline");
-const { checkBot, UserExit } = require("@numical/ubibot-util/");
+const { checkBot, EOL, UserExit } = require("@numical/ubibot-util/");
 const { botPrefix, userPrefix } = require("./cliPrefixes");
 
 const defaultOptions = {

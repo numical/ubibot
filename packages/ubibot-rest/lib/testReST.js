@@ -1,7 +1,7 @@
-const { EOL } = require("os");
 const request = require("supertest");
 const { test } = require("tape");
 const { constants, loadScripts } = require("@numical/ubibot-test");
+const { EOL } = require("@numical/ubibot-util");
 const startReST = require("./startReST");
 const endPoints = require("./endPoints");
 

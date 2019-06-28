@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Widget, addResponseMessage, dropMessages } from "react-chat-widget";
-import { checkBot } from "@numical/ubibot-util";
+import { checkBot, EOL } from "@numical/ubibot-util";
 import "react-chat-widget/lib/styles.css";
 import "./App.css";
+
+const display = msg => {
+  msg.split(EOL).forEach(addResponseMessage);
+};
 
 class App extends Component {
   async startChat() {
@@ -13,9 +17,9 @@ class App extends Component {
       checkBot(bot);
       this.setState({ bot });
       const { value } = await bot.hello();
-      addResponseMessage(value);
+      display(value);
     } catch (err) {
-      addResponseMessage(err.message);
+      display(err.message);
     }
   }
 
@@ -23,10 +27,10 @@ class App extends Component {
     const { bot } = this.state;
     try {
       const { value } = await bot.respondTo({ value: request });
-      addResponseMessage(value);
+      display(value);
     } catch (err) {
       dropMessages();
-      addResponseMessage(err.message);
+      display(err.message);
       this.startChat();
     }
   }
