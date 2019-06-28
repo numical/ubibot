@@ -4,12 +4,11 @@ const Match = require("./Match");
 const { orderTaggedWords } = require("./posTags");
 
 const words = new WordTokenizer();
-const lexiconLoader = asyncLoad("Lexicon");
 let tagger;
 
 const tag = async tokens => {
   if (!tagger) {
-    const Lexicon = await lexiconLoader;
+    const Lexicon = await asyncLoad.Lexicon();
     const lexicon = new Lexicon("EN", "N");
     const ruleset = new RuleSet("EN");
     tagger = new BrillPOSTagger(lexicon, ruleset);

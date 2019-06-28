@@ -12,7 +12,8 @@ class App extends Component {
       const bot = botFactory();
       checkBot(bot);
       this.setState({ bot });
-      addResponseMessage(await bot.hello());
+      const { value } = await bot.hello();
+      addResponseMessage(value);
     } catch (err) {
       addResponseMessage(err.message);
     }
@@ -21,8 +22,8 @@ class App extends Component {
   async userSays(request) {
     const { bot } = this.state;
     try {
-      const response = await bot.respondTo(request);
-      addResponseMessage(response);
+      const { value } = await bot.respondTo({ value: request });
+      addResponseMessage(value);
     } catch (err) {
       dropMessages();
       addResponseMessage(err.message);
