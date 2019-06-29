@@ -19,7 +19,8 @@
     "rest": "startRest index.js",
     "rest:test": "testRest index.js ./scripts",
     "test": "npm run cli:test",
-    "webapp": "startWeb index.js"
+    "web": "startWeb index.js",
+    "web:build": "buildWeb index.js dist"
   },
   "author": "mike.evans@numical.com",
   "license": "MIT"
