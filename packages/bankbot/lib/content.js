@@ -8,6 +8,10 @@ module.exports = Object.freeze({
   accountDetailsTemplate: createContentTemplate(
     "The sort code is ${sortcode} and the account number is ${accountNumber}."
   ),
+  payees: {
+    title: "Available payees are:",
+    lineTemplate: createContentTemplate("${index}: ${name} : ${sortcode} : ${accountNumber}")
+  },
   transactions: {
     title: "Your most recent transactions are:",
     lineTemplate: createContentTemplate("${date} : ${type} : ${merchant} : ${signedAmount}", {

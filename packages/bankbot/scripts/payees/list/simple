@@ -1,0 +1,6 @@
+bot:Hello. I'm BankBot.  How can I help?
+user:payees
+bot:Available payees are:
+bot:1: Town Council : 04-05-06 : 2345678901
+bot:2: Electricity Supplier : 07-08-09 : 3456789012
+bot:3: John Smith : 03-02-01 : 4567890123

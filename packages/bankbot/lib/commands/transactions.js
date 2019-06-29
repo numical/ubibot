@@ -1,6 +1,6 @@
 const { EOL } = require("@numical/ubibot-util");
 const { transactions } = require("../content");
-const getAccount = require("../mocks/getAccount");
+const getAccount = require("../../mocks/getAccount");
 
 const MAX_LINES = 6;
 const { title, lineTemplate } = transactions;
