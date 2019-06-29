@@ -1,27 +1,17 @@
-const { asyncLoad, BrillPOSTagger, RuleSet, WordTokenizer } = require("@numical/ubibot-natural");
+const { tagger, WordTokenizer } = require("@numical/ubibot-natural");
 const { POSSIBLE, PROBABLE } = require("./scores");
 const Match = require("./Match");
 const { orderTaggedWords } = require("./posTags");
 
 const words = new WordTokenizer();
-let tagger;
-
-const tag = async tokens => {
-  if (!tagger) {
-    const Lexicon = await asyncLoad.Lexicon();
-    const lexicon = new Lexicon("EN", "N");
-    const ruleset = new RuleSet("EN");
-    tagger = new BrillPOSTagger(lexicon, ruleset);
-  }
-  return tagger.tag(tokens);
-};
 
 const identifyPrincipleConcept = async request => {
   const tokens = words.tokenize(request);
   if (tokens.length === 1) {
     return tokens[0];
   } else {
-    const { taggedWords } = await tag(tokens);
+    const tag = await tagger;
+    const { taggedWords } = tag(tokens);
     orderTaggedWords(taggedWords);
     return taggedWords[0].token;
   }

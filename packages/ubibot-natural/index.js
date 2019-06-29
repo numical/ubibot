@@ -7,23 +7,36 @@ const path = "natural/lib/natural/brill_pos_tagger/lib/Lexicon";
 
 /*
  A hack to enable chunking and dynamic loading for the web app.
- 'import' will work when transpiled by webpack but throw a 'Not Supported' exception in native node.
- Then we use a standard require BUT with a variable - which prevents webpack picking it up a second time.
+ 'import' will work when transpiled by webpack but throw a 'Not Supported' exception in native Node.
+ So for native Node we use a standard require BUT with a variable.  This prevents webpack picking it up a second time.
  */
-const asyncLoad = {
-  Lexicon: () =>
-    new Promise((resolve, reject) => {
-      import(/* webpackChunkName: "natural" */ "natural/lib/natural/brill_pos_tagger/lib/Lexicon")
-        .then(resolve)
-        .catch(() => {
-          try {
-            // eslint-disable-next-line import/no-dynamic-require
-            resolve(require(path));
-          } catch (err) {
-            reject(err);
-          }
-        });
-    })
-};
+const loadLexicon = new Promise((resolve, reject) => {
+  import(/* webpackChunkName: "natural" */ "natural/lib/natural/brill_pos_tagger/lib/Lexicon")
+    .then(resolve)
+    .catch(() => {
+      try {
+        // eslint-disable-next-line import/no-dynamic-require
+        resolve(require(path));
+      } catch (err) {
+        reject(err);
+      }
+    });
+});
 
-module.exports = { asyncLoad, BrillPOSTagger, JaroWinklerDistance, RuleSet, WordTokenizer };
+const tagger = new Promise((resolve, reject) => {
+  loadLexicon
+    .then(Lexicon => {
+      try {
+        const lexicon = new Lexicon("EN", "N");
+        const ruleset = new RuleSet("EN");
+        const tagger = new BrillPOSTagger(lexicon, ruleset);
+        const tag = tagger.tag.bind(tagger);
+        resolve(tag);
+      } catch (err) {
+        reject(err);
+      }
+    })
+    .catch(reject);
+});
+
+module.exports = { tagger, JaroWinklerDistance, WordTokenizer };
