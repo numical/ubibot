@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@numical/ubibot-util": "0.0.1",
-    "ramda": "^0.26.1"
+    "ramda": "^0.27.2"
   },
   "devDependencies": {
     "faucet": "^0.0.1",
