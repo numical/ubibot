@@ -16,7 +16,7 @@
     "@numical/ubibot-test": "0.0.1",
     "@numical/ubibot-util": "0.0.1",
     "cwd": "^0.10.0",
-    "koa": "2.7.0",
+    "koa": "2.15.4",
     "koa-body": "4.0.8",
     "koa-cors": "0.0.16",
     "koa-router": "7.4.0",
